@@ -1,0 +1,51 @@
+- 28.12.2013: authors indicate if they want to re-submit a major revision to CGF (e-mail to holly@acm.org)
+- 28.03.2014: submission of major revision
+- 28.06.2014: review process expected to be finalized
+
+
+
+*** Performance (1)
+ * DFB (MCTB12)
+ * More GPUs, including ATI
+ * Viewpoint dependence? dch
+ * Source of speedup: drivers or parallellism
+ * Detailed profiling, timers
+ * Bigger data and bigger viewports
+ 
+*** Pipeline (2)
+ * Clarify LOCAL vs GLOBAL problem (lots of misunderstandings here)
+ * Illustrations
+ * ppDP description
+ * More on actual fusion
+
+*** Text (3)
+ * Alternative methods (related work)
+ * General transperency (related work)
+ * General GPU sorting (related work | later)
+ * Perfomance graph (results)
+ * Carful with "first time possible" (intro | conslusions)
+ * List from Review 5
+
+*** Misc (4)
+ * No user study
+ * Striking examples
+ * Auto-tuning variables
+ * Artifacts in rendering/video
+
+
+ 
+*1) No user study
+*2) Better illustrations
+*3) Clear perf. graph notation
+*4) Better describe pipeline
+*5) Striking examples, big data
+*6) Discussions transperency, alternatives
+*7) Missunderstanding that we're solving the global problem
+*8) Artifacts in rendering/video
+*9) Auto-tuning variables
+*10) More GPUs (Nvidia and ATI)
+*11) "First time possible"
+*12) More performance analysis against STAR
+*13) Discussion on GPU sorting
+*14) DCH viewpoint dependence 
+*15) Misunderstanding of gain source (driver vs. parallellism)

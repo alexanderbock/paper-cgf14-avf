@@ -1,0 +1,89 @@
+CGF 560 Performance (Impl | Impl+ppAO | Impl+ppDP | Impl+ppAO+ppDP)
+
+
+Molecule
+GTX560 (1024x768) 30.0s (448 | 64 - 32 16 8 0) ERT on
+
+ab_basic : ppDP 0 ppAO 0 [64]((0, 0, 0, 0)) fps: 2.289695
+ab_basic : ppDP 0 ppAO 1 [64]((32, 16, 8, 0)) fps: 8.079767
+ab_basic : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 11.706823
+ab_basic : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 11.883854
+ab_dynamic : ppDP 0 ppAO 0 [64]((0, 0, 0, 0)) fps: 0.590199
+ab_dynamic : ppDP 0 ppAO 1 [64]((32, 16, 8, 0)) fps: 0.736189
+ab_dynamic : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 0.727457
+ab_dynamic : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 0.717860
+ab_linkedlist : ppDP 0 ppAO 0 [64]((0, 0, 0, 0)) fps: 2.017738
+ab_linkedlist : ppDP 0 ppAO 1 [64]((32, 16, 8, 0)) fps: 5.987925
+ab_linkedlist : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 8.789158
+ab_linkedlist : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 8.965965
+
+& 2.29 & 8.08 & 11.71 & 11.88 \\ % ab_basic (Molecule)
+& 0.59 & 0.74 & 0.73 & 0.72 \\ % ab_dynamic (Molecule)
+& 2.02 & 5.99 & 8.79 & 8.97 \\ % ab_linkedlist (Molecule)
+
+
+
+Space
+GTX560 (1024x768) 30.0s (448 | 32 - 16 8 0 0) ERT on
+
+ab_basic : ppDP 0 ppAO 0 [32]((0, 0, 0, 0)) fps: 2.272958
+ab_basic : ppDP 0 ppAO 1 [32]((16, 8, 0, 0)) fps: 6.397191
+ab_basic : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 6.215929
+ab_basic : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 6.487060
+ab_dynamic : ppDP 0 ppAO 0 [32]((0, 0, 0, 0)) fps: 0.661504
+ab_dynamic : ppDP 0 ppAO 1 [32]((16, 8, 0, 0)) fps: 0.810618
+ab_dynamic : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 0.797206
+ab_dynamic : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 0.800066
+ab_linkedlist : ppDP 0 ppAO 0 [32]((0, 0, 0, 0)) fps: 2.114622
+ab_linkedlist : ppDP 0 ppAO 1 [32]((16, 8, 0, 0)) fps: 5.970165
+ab_linkedlist : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 5.745005
+ab_linkedlist : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 6.031675
+
+& 2.27 & 6.40 & 6.22 & 6.49 \\ % ab_basic (Space)
+& 0.66 & 0.81 & 0.80 & 0.80 \\ % ab_dynamic (Space)
+& 2.11 & 5.97 & 5.75 & 6.03 \\ % ab_linkedlist (Space)
+
+
+
+Flow
+GTX560 (1024x768) 30.0s (448 | 128 - 64 32 16 8) ERT on
+
+ab_basic : ppDP 0 ppAO 0 [128]((0, 0, 0, 0)) fps: 0.861328
+ab_basic : ppDP 0 ppAO 1 [128]((64, 32, 16, 8)) fps: 8.282103
+ab_basic : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 10.527784
+ab_basic : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 12.569699
+ab_dynamic : ppDP 0 ppAO 0 [128]((0, 0, 0, 0)) fps: 0.385093
+ab_dynamic : ppDP 0 ppAO 1 [128]((64, 32, 16, 8)) fps: 0.813001
+ab_dynamic : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 0.805183
+ab_dynamic : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 0.784972
+ab_linkedlist : ppDP 0 ppAO 0 [128]((0, 0, 0, 0)) fps: 0.604193
+ab_linkedlist : ppDP 0 ppAO 1 [128]((64, 32, 16, 8)) fps: 3.027226
+ab_linkedlist : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 6.883319
+ab_linkedlist : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 8.770771
+
+& 0.86 & 8.28 & 10.53 & 12.57 \\ % ab_basic (Flow)
+& 0.39 & 0.81 & 0.81 & 0.78 \\ % ab_dynamic (Flow)
+& 0.60 & 3.03 & 6.88 & 8.77 \\ % ab_linkedlist (Flow)
+
+
+
+Neuro
+GTX560 (1024x768) 30.0s (448 | 128 - 64 32 16 8) ERT on
+
+ab_basic : ppDP 0 ppAO 0 [128]((0, 0, 0, 0)) fps: 0.916646
+ab_basic : ppDP 0 ppAO 1 [128]((64, 32, 16, 8)) fps: 9.110999
+ab_basic : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 19.587102
+ab_basic : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 21.328711
+ab_dynamic : ppDP 0 ppAO 0 [128]((0, 0, 0, 0)) fps: 0.258786
+ab_dynamic : ppDP 0 ppAO 1 [128]((64, 32, 16, 8)) fps: 0.378768
+ab_dynamic : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 0.446426
+ab_dynamic : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 0.433622
+ab_linkedlist : ppDP 0 ppAO 0 [128]((0, 0, 0, 0)) fps: 0.375608
+ab_linkedlist : ppDP 0 ppAO 1 [128]((64, 32, 16, 8)) fps: 0.974677
+ab_linkedlist : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 6.310001
+ab_linkedlist : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 7.536747
+
+& 0.92 & 9.11 & 19.59 & 21.33 \\ % ab_basic (Neuro)
+& 0.26 & 0.38 & 0.45 & 0.43 \\ % ab_dynamic (Neuro)
+& 0.38 & 0.97 & 6.31 & 7.54 \\ % ab_linkedlist (Neuro)
+

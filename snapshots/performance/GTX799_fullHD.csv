@@ -1,0 +1,18 @@
+# CGF 799 Performance
+Impl,Impl+ppAO,Impl+ppDP,Impl+ppAO+ppDP,dataset
+
+1.41329, 9.00291, 19.75012, 17.54036, ab_basic (Molecule)
+0.76709, 1.41772, 1.53061, 1.56312, ab_dynamic (Molecule)
+1.29652, 8.19920, 16.98303, 15.27062, ab_linkedlist (Molecule)
+
+1.58333, 6.83032, 8.36614, 7.83056, ab_basic (Space)
+0.90238, 1.65562, 1.70453, 1.67532, ab_dynamic (Space)
+1.46827, 6.47820, 7.96294, 7.30449, ab_linkedlist (Space)
+
+2.73004, 26.81038, 34.33924, 33.68483, ab_basic (Flow)
+1.39963, 2.59856, 2.64012, 2.62609, ab_dynamic (Flow)
+2.54540, 24.74032, 31.25729, 30.47787, ab_linkedlist (Flow)
+
+2.06075, 6.29806, 26.71032, 27.56347, ab_basic (Neuro)
+0.87209, 1.26132, 1.46541, 1.41057, ab_dynamic (Neuro)
+1.34093, 2.66326, 10.30390, 12.19641, ab_linkedlist (Neuro)

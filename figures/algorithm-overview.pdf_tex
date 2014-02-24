@@ -1,0 +1,69 @@
+%% Creator: Inkscape inkscape 0.48.4, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'algorithm-overview.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{462.04726563bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.21472391)%
+    \put(0,0){\includegraphics[width=\unitlength]{algorithm-overview.pdf}}%
+    \put(0.1670139,0.01073971){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{fragment pool}}}%
+    \put(0.35248318,0.05820023){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{unused}}}%
+    \put(0.35196739,0.15397039){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{fragment data}}}%
+    \put(0.48005799,0.15184394){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{base offset}}}%
+    \put(0.3512235,0.04265292){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{memory}}}%
+    \put(0.00766535,0.19211669){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{fixed fragment buffer (FFB)}}}}%
+    \put(0.37576349,0.19211648){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{dynamic fragment buffer (DFB)}}}}%
+    \put(0.67046994,0.19211669){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{per-pixel linked list (PPLL)}}}}%
+    \put(0.77917734,0.15177779){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{list anchor}}}%
+    \put(0.98388258,0.11098247){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[b]{\smash{global GPU memory}}}}%
+    \put(0.00750472,0.01094259){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{framebuffer}}}%
+    \put(0.48005787,0.02965889){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{counter}}}%
+    \put(0.11195982,0.02965889){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{counter}}}%
+    \put(0.77460372,0.02965889){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{counter}}}%
+    \put(0.07515001,0.13957404){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{pixel}}}%
+  \end{picture}%
+\endgroup%

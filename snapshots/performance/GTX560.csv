@@ -1,0 +1,18 @@
+# CGF 560 Performance
+Impl,Impl+ppAO,Impl+ppDP,Impl+ppAO+ppDP,dataset
+
+2.28969, 8.07977, 11.70682, 11.88385, ab_basic (Molecule)
+0.59020, 0.73619, 0.72746, 0.71786, ab_dynamic (Molecule)
+2.01774, 5.98792, 8.78916, 8.96597, ab_linkedlist (Molecule)
+
+2.27296, 6.39719, 6.21593, 6.48706, ab_basic (Space)
+0.66150, 0.81062, 0.79721, 0.80007, ab_dynamic (Space)
+2.11462, 5.97017, 5.74500, 6.03168, ab_linkedlist (Space)
+
+0.86133, 8.28210, 10.52778, 12.56970, ab_basic (Flow)
+0.38509, 0.81300, 0.80518, 0.78497, ab_dynamic (Flow)
+0.60419, 3.02723, 6.88332, 8.77077, ab_linkedlist (Flow)
+
+0.91665, 9.11100, 19.58710, 21.32871, ab_basic (Neuro)
+0.25879, 0.37877, 0.44643, 0.43362, ab_dynamic (Neuro)
+0.37561, 0.97468, 6.31000, 7.53675, ab_linkedlist (Neuro)

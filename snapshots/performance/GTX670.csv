@@ -1,0 +1,18 @@
+# CGF 670 Performance
+Impl,Impl+ppAO,Impl+ppDP,Impl+ppAO+ppDP,dataset
+
+2.33119, 8.28350, 21.56152, 18.16902, ab_basic (Molecule)
+1.76875, 4.19742, 4.79907, 4.43559, ab_dynamic (Molecule)
+2.18155, 7.61067, 16.59143, 14.58793, ab_linkedlist (Molecule)
+
+2.23876, 8.03550, 10.01099, 9.26109, ab_basic (Space)
+1.73287, 4.25062, 4.76585, 4.53783, ab_dynamic (Space)
+2.05714, 7.43129, 9.17453, 8.48738, ab_linkedlist (Space)
+
+0.80643, 2.13079, 4.97635, 4.98322, ab_basic (Flow)
+0.52300, 1.34470, 1.79588, 1.65886, ab_dynamic (Flow)
+0.77655, 1.93048, 4.76504, 4.96498, ab_linkedlist (Flow)
+
+1.28972, 2.38304, 23.11037, 21.98802, ab_basic (Neuro)
+0.33943, 0.48584, 2.21624, 1.74309, ab_dynamic (Neuro)
+0.36439, 0.43537, 9.68929, 10.34327, ab_linkedlist (Neuro)

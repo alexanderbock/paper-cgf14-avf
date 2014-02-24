@@ -1,0 +1,66 @@
+%Program for Depth Complexity Histograms
+
+%Clear Memory & Command Window
+clc;
+clear all;
+close all;
+
+set(gca,'FontSize',13)
+
+dc_image_folder = 'DCimages\';
+dc_hist_folder = 'DChistograms\';
+numBins = 256;
+maxAxis = 64;
+
+folderL = length(dc_image_folder)+1;
+
+%cd(dc_image_folder);
+files = getAllFiles(dc_image_folder);
+[m,n] = size(files);
+
+outPath = strcat(pwd, '\', dc_hist_folder);
+
+vBins = [256 256 256 256];
+vAxis = [256 128  64  32];
+
+for k=1:4
+%Start New Calculation of DCH
+for j=1:m
+    %Read Image
+    thisImg = imread(strcat(pwd, '\', files{j}));
+    thisSize = size(thisImg);
+    
+    %Create Depth Complexity Histogram
+    [dch,val] = dchist(thisImg, numBins);
+    
+    %Parse filename
+    fileName = char(files{j});
+    fileName = fileName(folderL:length(fileName)-4);
+    
+    %Create Plot
+    h = figure;
+    set(gcf,'visible','off');
+    thisBar = bar(dch,val);
+    set(gca, 'xLim', [0 maxAxis]); 
+    set(gca, 'yScale', 'log'); 
+    
+    % Next we plot to SVG add a title, ylabel, grid, box on
+    cd('../plot2svg');
+    ylabel('Number of pixels', 'FontSize', 20);
+    xlabel('Depth Complexity', 'FontSize', 20);
+    % Write to folder
+    mkdir(strcat(outPath, fileName, '\'));
+
+     plot2svg(strcat(outPath, fileName, '\', fileName, '_dch-', int2str(maxAxis), '.svg'),h);
+    
+%     [hs ns] = dcmap2(thisImg,[8 32 64 128]);
+%     for i = 1:ns
+%         print(hs(i),'-dpng',strcat(outPath, fileName, '\', fileName, '_', int2str(i), '_map.png'))
+%     end
+    
+    cd('../depthcomplex');
+            
+end % End For Loop
+end
+
+

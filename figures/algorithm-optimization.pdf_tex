@@ -1,0 +1,80 @@
+%% Creator: Inkscape inkscape 0.48.4, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'algorithm-optimization.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{453.54331055bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.30624998)%
+    \put(0,0){\includegraphics[width=\unitlength]{algorithm-optimization.pdf}}%
+    \put(0.98351528,0.23312084){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[b]{\smash{global GPU mem.}}}}%
+    \put(0.98464333,0.07325915){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[b]{\smash{local GPU cache}}}}%
+    \put(0.32656249,0.12054266){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{per-pixel Array Optimization (ppAO)}}}}%
+    \put(0.64531252,0.12054266){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{per-pixel Depth Peeling (ppDP)}}}}%
+    \put(0.0078125,0.12054266){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textbf{static management (state-of-the-art)}}}}%
+    \put(0.71593315,0.06964374){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{6$\times$}}}%
+    \put(0.71593315,0.00650591){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{1$\times$}}}%
+    \put(0.81593324,0.06900575){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{1$\times$}}}%
+    \put(0.33281251,0.22970288){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{lightweight pixel}}}%
+    \put(0.47656248,0.17970291){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{resolve array in local cache memory}}}%
+    \put(0.33281251,0.2734529){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{heavy pixel}}}%
+    \put(0.30781249,0.10219579){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{64}}}%
+    \put(0.05433815,0.03969597){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{5}}}%
+    \put(0.30781249,0.03930258){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{64}}}%
+    \put(0.24360181,0.10217613){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{49}}}%
+    \put(0.72109629,0.28930269){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{49}}}%
+    \put(0.73984617,0.039696){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{8}}}%
+    \put(0.73984617,0.10219579){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{8}}}%
+    \put(0.8398462,0.10219579){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{8}}}%
+    \put(0.79734422,0.10198047){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{1}}}%
+    \put(0.72109623,0.039696){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{5}}}%
+    \put(0.44602738,0.24594595){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{5}}}%
+    \put(0.62656249,0.10219579){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{64}}}%
+    \put(0.5623518,0.10217613){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{49}}}%
+    \put(0.40234618,0.039696){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{8}}}%
+    \put(0.38359625,0.039696){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{5}}}%
+  \end{picture}%
+\endgroup%

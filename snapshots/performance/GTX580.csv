@@ -1,0 +1,18 @@
+# CGF 580 Performance
+Impl,Impl+ppAO,Impl+ppDP,Impl+ppAO+ppDP,dataset
+
+4.22880, 13.64797, 19.24788, 19.72802, ab_basic (Molecule)
+0.68630, 0.77814, 0.78600, 0.78187, ab_dynamic (Molecule)
+3.46963, 8.26997, 10.02796, 10.23074, ab_linkedlist (Molecule)
+
+4.05514, 10.36736, 9.89393, 10.34870, ab_basic (Space)
+0.75716, 0.84959, 0.84407, 0.84668, ab_dynamic (Space)
+3.51121, 7.84401, 7.56065, 7.80715, ab_linkedlist (Space)
+
+1.89732, 6.03256, 14.61059, 18.30448, ab_basic (Flow)
+0.60731, 0.79921, 0.92830, 0.90488, ab_dynamic (Flow)
+1.24283, 2.89022, 8.57823, 9.94809, ab_linkedlist (Flow)
+
+2.60522, 4.83984, 20.68323, 22.30507, ab_basic (Neuro)
+0.32317, 0.38022, 0.49988, 0.49244, ab_dynamic (Neuro)
+0.64170, 1.06135, 7.42212, 7.93185, ab_linkedlist (Neuro)

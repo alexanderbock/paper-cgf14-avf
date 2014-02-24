@@ -1,0 +1,89 @@
+CGF 799 Performance (Impl | Impl+ppAO | Impl+ppDP | Impl+ppAO+ppDP)
+
+
+Molecule
+GTX799 (1024x768) 30.0s (2048 | 64 - 32 16 8 0) ERT on
+
+ab_basic : ppDP 0 ppAO 0 [64]((0, 0, 0, 0)) fps: 4.118234
+ab_basic : ppDP 0 ppAO 1 [64]((32, 16, 8, 0)) fps: 14.881185
+ab_basic : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 37.481010
+ab_basic : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 31.883867
+ab_dynamic : ppDP 0 ppAO 0 [64]((0, 0, 0, 0)) fps: 2.019894
+ab_dynamic : ppDP 0 ppAO 1 [64]((32, 16, 8, 0)) fps: 3.278008
+ab_dynamic : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 3.650513
+ab_dynamic : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 3.563309
+ab_linkedlist : ppDP 0 ppAO 0 [64]((0, 0, 0, 0)) fps: 3.898444
+ab_linkedlist : ppDP 0 ppAO 1 [64]((32, 16, 8, 0)) fps: 14.166129
+ab_linkedlist : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 31.935461
+ab_linkedlist : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 27.567541
+
+& 4.12 & 14.88 & 37.48 & 31.88 \\ % ab_basic (Molecule)
+& 2.02 & 3.28 & 3.65 & 3.56 \\ % ab_dynamic (Molecule)
+& 3.90 & 14.17 & 31.94 & 27.57 \\ % ab_linkedlist (Molecule)
+
+
+
+Space
+GTX799 (1024x768) 30.0s (2048 | 32 - 16 8 0 0) ERT on
+
+ab_basic : ppDP 0 ppAO 0 [32]((0, 0, 0, 0)) fps: 3.958691
+ab_basic : ppDP 0 ppAO 1 [32]((16, 8, 0, 0)) fps: 14.402891
+ab_basic : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 18.407039
+ab_basic : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 16.930128
+ab_dynamic : ppDP 0 ppAO 0 [32]((0, 0, 0, 0)) fps: 2.260196
+ab_dynamic : ppDP 0 ppAO 1 [32]((16, 8, 0, 0)) fps: 4.015531
+ab_dynamic : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 4.198901
+ab_dynamic : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 4.129208
+ab_linkedlist : ppDP 0 ppAO 0 [32]((0, 0, 0, 0)) fps: 3.697517
+ab_linkedlist : ppDP 0 ppAO 1 [32]((16, 8, 0, 0)) fps: 13.671604
+ab_linkedlist : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 17.574261
+ab_linkedlist : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 15.781352
+
+& 3.96 & 14.40 & 18.41 & 16.93 \\ % ab_basic (Space)
+& 2.26 & 4.02 & 4.20 & 4.13 \\ % ab_dynamic (Space)
+& 3.70 & 13.67 & 17.57 & 15.78 \\ % ab_linkedlist (Space)
+
+
+
+Flow
+GTX799 (1024x768) 30.0s (2048 | 128 - 64 32 16 8) ERT on
+
+ab_basic : ppDP 0 ppAO 0 [128]((0, 0, 0, 0)) fps: 1.463135
+ab_basic : ppDP 0 ppAO 1 [128]((64, 32, 16, 8)) fps: 3.291513
+ab_basic : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 28.020885
+ab_basic : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 28.947381
+ab_dynamic : ppDP 0 ppAO 0 [128]((0, 0, 0, 0)) fps: 1.077381
+ab_dynamic : ppDP 0 ppAO 1 [128]((64, 32, 16, 8)) fps: 2.013229
+ab_dynamic : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 4.227744
+ab_dynamic : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 4.148538
+ab_linkedlist : ppDP 0 ppAO 0 [128]((0, 0, 0, 0)) fps: 1.353093
+ab_linkedlist : ppDP 0 ppAO 1 [128]((64, 32, 16, 8)) fps: 3.323591
+ab_linkedlist : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 23.927854
+ab_linkedlist : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 24.778097
+
+& 1.46 & 3.29 & 28.02 & 28.95 \\ % ab_basic (Flow)
+& 1.08 & 2.01 & 4.23 & 4.15 \\ % ab_dynamic (Flow)
+& 1.35 & 3.32 & 23.93 & 24.78 \\ % ab_linkedlist (Flow)
+
+
+
+Neuro
+GTX799 (1024x768) 30.0s (2048 | 128 - 64 32 16 8) ERT on
+
+ab_basic : ppDP 0 ppAO 0 [128]((0, 0, 0, 0)) fps: 1.031087
+ab_basic : ppDP 0 ppAO 1 [128]((64, 32, 16, 8)) fps: 1.361556
+ab_basic : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 31.754314
+ab_basic : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 35.404907
+ab_dynamic : ppDP 0 ppAO 0 [128]((0, 0, 0, 0)) fps: 0.666124
+ab_dynamic : ppDP 0 ppAO 1 [128]((64, 32, 16, 8)) fps: 0.809706
+ab_dynamic : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 2.693757
+ab_dynamic : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 2.651902
+ab_linkedlist : ppDP 0 ppAO 0 [128]((0, 0, 0, 0)) fps: 0.825963
+ab_linkedlist : ppDP 0 ppAO 1 [128]((64, 32, 16, 8)) fps: 1.074082
+ab_linkedlist : ppDP 1 ppAO 0 [8*]((0, 0, 0, 0)) fps: 17.750960
+ab_linkedlist : ppDP 1 ppAO 1 [8*]((8, 0, 0, 0)) fps: 19.365162
+
+& 1.03 & 1.36 & 31.75 & 35.40 \\ % ab_basic (Neuro)
+& 0.67 & 0.81 & 2.69 & 2.65 \\ % ab_dynamic (Neuro)
+& 0.83 & 1.07 & 17.75 & 19.37 \\ % ab_linkedlist (Neuro)
+
