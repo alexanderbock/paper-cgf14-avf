@@ -1,0 +1,150 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 6.3.9600}\viewkind4\uc1 
+\pard\sl240\slmult1\f0\fs22\lang9 Associate Editor\par
+Comments to the Author:\par
+We now have three reviews of manuscript ''Hybrid Data Visualization Based On Depth Complexity Histogram Analysis'' (which is a major revision after an earlier submission to Eurographics) and they are consistently positive.  For quite some time, we were expecting a fourth review, but that one did not come in, eventually.  Since the three reviews, which we received convey a pretty consistent evaluation, we decided to move on an suggest a minor revision (as a last step before publication, hopefully).  Two of the reviewers have (a few) constructive suggestions of how to make the paper publishable and it is assumed that these changes are easy to incorporate.  Certainly, another cover letter should be provided along with the minor revision, explaining, how the authors improved their paper wrt. the reviewer comments.\par
+Recommendation #1: Probably Accept after Minor Revisions\par
+\par
+1 ----------------------------------------------------------------------------------\par
+\par
+Reviewer(s)' Comments to Author:\par
+Reviewer: 1\par
+\par
+Recommendation: Probably Accept after Minor Revisions\par
+\par
+Comments:\par
+This paper presents two optimizations/extensions for current a-buffer methods for rendering hybrid data (semi-transparent geometry + volume data) with a focus on improving performance by optimizing the usage of local GPU memory.\par
+\par
+The paper presents some small but interesting contributions, is well written and includes high-quality and informative figures. This paper is a resubmission of a eurographics submission. Overall, the reviewer comments were addressed very thoroughly and the paper was considerably improved.\par
+There are still some minor shortcomings (see details below), but overall I would recommend to accept this paper for publication.\par
+\par
+strengths & weaknesses:\par
+Both proposed algorithms are small but useful extensions that improve the performance of rendering hybrid scenes with high depth complexity.\par
+The main weaknesses I see are:\par
+1) evaluation on rather small data sets\par
+2) performance results of ppAO rather weak compared to ppDP (if I read Figure 6 correctly)\par
+\par
+novelty:\par
+The novelty of the paper is not very high as the contribution of this paper is incremental. Both proposed algorithms are rather straight-forward, but still optimize and improve current a-buffer methods. Therefore, I still consider this paper to be useful and have an impact on the graphics/visualization community.\par
+\par
+references:\par
+The references and related work section seem okay. Adding one or two sentences desribing the original a-buffer method could improve readability further.\par
+\par
+technical soundness:\par
+The algorithms seem technically sound, however some explanations could be improved. For example, Section 3.1 should be improved to better understand how a DCH is computed, right now this is rather unclear and confusing. \par
+Overall, I think that the work could be reproduced by a skilled graduate student.\par
+\par
+results:\par
+The figures and performance evaluation seem solid.\par
+\par
+exposition, figures:\par
+Overall the paper is very well written, and the Figures are really nice. Some points that could be improved are:\par
+- The abstract and introduction are very vague in regards to the paper's contribution. No details at all are given about the 2 proposed methods. It is stated several times that 'two novel components' will be introduced, but some more information on what that means would be good.\par
+- 3.1 is rather unclear\par
+- typo: "Under ideal circumstances...can BE eight times higher"\par
+\par
+\par
+Additional Questions:\par
+Classification of the paper: Research paper (presents innovative reseach results)\par
+\par
+Does the paper address computer graphics?: Yes\par
+\par
+Originality/novelty: Good\par
+\par
+Importance: Good\par
+\par
+Technical soundness: Good\par
+\par
+Clarity of writing and presentation: Good\par
+\par
+Clarity and quality of illustrations (if present): High\par
+\par
+Should the paper be shortened?\par
+If you recommend shortening the paper, please indicate in the 'Comments for Authors' section where the paper should be\par
+shortened, or mark-up and return the paper.: No\par
+\par
+Overall judgement: Good\par
+\par
+
+\pard\sl240\slmult1 2 ----------------------------------------------------------------------------------\par
+
+\pard\sl240\slmult1\par
+Reviewer: 2\par
+\par
+Recommendation: Probably Accept after Minor Revisions\par
+\par
+Comments:\par
+The paper "Hybrid Data Visualization Based On Depth Complexity Histogram Analysis" presents an extension to existing GPU based a-buffer implementations in that it computes a binning of the fragments with respect to their depth complexity. Then for each bin a specialized kernel is executed. \par
+\par
+The paper is a mayor revision from a EG 2014 paper and I think the authors have done a nice job of addressing the reviewers concerns. While I do agree with the work overall is somewhat incremental I don't see this being a reason to reject the paper. Overall, I think the paper is of high quality and a minor revision (fining my comments below) should suffice to get the paper into a publishable state.\par
+\par
+\par
+Specific comments:\par
+\par
+"current state-of-the-art algorithms do not support interactive exploration as complexity increases" I would argue that this statement is a little bit too strong. After all the proposed method does not speed up the state-of-the-art by orders of magnitude.\par
+\par
+"2. Related Work", it may sound a little far fetched and is really just a recommendation but you may to consider adding a reference to a modern "ray-guided-VR" paper (such as Hadwiger et al. "Interactive volume exploration of petascale microscopy data streams using a visualization-driven virtual memory approach") mainly because multi-volume rendering with such an approach is a trivial extension of a few lines of shader code.\par
+\par
+As for depth peeling, you may want to consider adding a few more recent references to you list of papers to demonstrate that this is a very active field of research and not something that none has worked on for half a decade.\par
+\par
+"3.1. Depth Complexity Histograms" I'm just curious: can't you just use the accumulation buffer for that purpose? Is that still supported by todays hardware?\par
+\par
+"5.2. Preventing Over-sized Local Arrays Using per-pixel Depth Peeling" is the problem of overflowing depth peeling buffers really such a big issue? How big is the difference if only the first n (say 32) surfaces are rendered?\par
+\par
+One comment about the video: Neither, the build in tools on windows, i.e., the media player nor the build in quicktime on mac were able to play your video. I managed to play it with VLC but you may consider recoding the video in some more standard format if you want to make it part of the submitted version. Actually, I haven't checked why only VLC plays it but you must be doing something out of the ordinary, maybe some exotic codec?\par
+\par
+Additional Questions:\par
+Classification of the paper: Research paper (presents innovative reseach results)\par
+\par
+Does the paper address computer graphics?: Yes\par
+\par
+Originality/novelty: Good\par
+\par
+Importance: Average\par
+\par
+Technical soundness: High\par
+\par
+Clarity of writing and presentation: Good\par
+\par
+Clarity and quality of illustrations (if present): Good\par
+\par
+Should the paper be shortened?\par
+If you recommend shortening the paper, please indicate in the 'Comments for Authors' section where the paper should be\par
+shortened, or mark-up and return the paper.: No\par
+\par
+Overall judgement: Good\par
+
+\pard\sl240\slmult1\par
+3 ----------------------------------------------------------------------------------\par
+
+\pard\sl240\slmult1\par
+Reviewer: 3\par
+\par
+Recommendation: Accept\par
+\par
+Comments:\par
+The authors have done a very thorough revision of their paper taking into consideration the reviewers comments and extended the results comparison and validation that greatly improves the paper. I believe the paper is now ready for publication.\par
+\par
+Additional Questions:\par
+Classification of the paper: Research paper (presents innovative reseach results)\par
+\par
+Does the paper address computer graphics?: Yes\par
+\par
+Originality/novelty: High\par
+\par
+Importance: Good\par
+\par
+Technical soundness: High\par
+\par
+Clarity of writing and presentation: Good\par
+\par
+Clarity and quality of illustrations (if present): High\par
+\par
+Should the paper be shortened?\par
+If you recommend shortening the paper, please indicate in the 'Comments for Authors' section where the paper should be\par
+shortened, or mark-up and return the paper.: No\par
+\par
+Overall judgement: High\par
+\par
+}
+ 
