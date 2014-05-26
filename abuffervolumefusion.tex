@@ -348,7 +348,7 @@ To ensure correct blending order of multiple semi-transparent samples, Order Ind
 Two of the most widespread approaches are depth peeling and \ab{}s. 
 Our algorithm follows the principles and global memory management of the \ab{}, which yields superior performance for scenes with high depth complexity \cite{Yang2010,Kauker2013}. 
 
-The \ab{} concept is a leading OIT solution based on the temporary storage of all intermediate fragments. 
+The \ab{} is a leading OIT solution based on the temporary storage and sorting of intermediate pixel fragments. 
 The concept was first introduced by Carpenter~\cite{Carpenter1984}. 
 Subsequent works improved the improved the concept~\cite{ebert1990abuffer,callahan2005kbuffer,bavoil2007multifragkbuffer,myers2007techrep,Vasilakis2014}, including hardware adaptations that were generally limited to a comparatively low number of samples or utilized pre-sorting of primitives. 
 Further improvements in graphics hardware led to \ab{} variants with support for higher depth complexities including paged variations of the algorithm \cite{kainz2009ray,Crassin2010}, Per-Pixel Linked Lists (PPLL) \cite{Yang2010}, and an alternative called Dynamic Fragment Buffers (DFB) or s-buffer \cite{Maule2012,Vasilakis2012}. 
@@ -484,8 +484,14 @@ In addition, one of the components proposed in this paper shares high resemblanc
 In this paper, we have chosen four representative scenes of different fields including molecular science (\emph{protein}), space weather simulations (\emph{space}), neurosurgical treatment planning (\emph{medical}), and computational fluid dynamics (\emph{cfd}). 
 Characteristic for the selected scenes is that the major computational costs arise from the task of ordering all contributions in terms of visibility. 
 In modern OIT solutions, these costs are directly related to the observed depth complexity in the image, i.e., the number of overlapping contributions per pixel. 
-%
 At the same time, most scenes often feature non-uniform complexity distributions in image space with clusters of high depth complexity surrounded by regions of lower complexity. 
+
+% Molecular
+%
+The first hybrid data scene is shown in Figure~\ref{fig:protein} and depicts the protein \emph{human carbonic anhydrase II} (PDB-ID: 2CBA). 
+The scene contains protein structures stored in polygonal meshes and volumetric data sources representing electron charge densities. 
+Such protein visualizations are commonly used to examine possible docking positions between the protein and other molecules~\cite{Seeliger2010}. 
+%
 To analyze the complexity of such scenes we thus utilize depth complexity histograms.
 
 
@@ -497,13 +503,14 @@ To analyze the complexity of such scenes we thus utilize depth complexity histog
 %Computing a \dch{} is done by accumulating an integer ``image'' of the scene during a single rendering pass where each pixel value is treated as an atomic counter that is incremented once for each incoming fragment.
 %The \dch{} can then be computed as a standard histogram over this integer image.
 
-Depth Complexity Histograms (\dch{}s) are histograms computed from images depicting the observed depth complexities as seen from the active viewpoint. 
-Figure~\ref{fig:protein}(\subref{fig:sub:protein}, \subref{fig:sub:protein-dci}, \subref{fig:sub:protein-dch}) exemplifies a scene, its associated complexity image (inverted grayscale) and the resulting \dch. 
-For the computation of a \dch, both shading and blending are first de-activated. 
+Using the protein scene in Figure~\ref{fig:protein} as an example. 
+The Depth Complexity Histogram (\dch) for the current camera setting is shown in (\subref{fig:sub:protein-dch}). 
+The \dch{} is computed by first rendering a depth complexity image as shown in (\subref{fig:sub:protein-dci}). 
+When rendering the complexity image, both shading and blending are first de-activated. 
 All geometry and volume bounding boxes are then ``rendered'' into an integer image which pixels are used as atomic counters incremented by the incoming fragments. 
-The result is a complexity image which represents the observed depth complexity of the scene. 
-The \dch{} is computed as a standard histogram over this image. 
-Each bin in a \dch{} is thus associated with a complexity range and holds the number of pixels whose depth complexities fall within that range. 
+Each pixel value in the complexity image thus holds the number of fragments for that pixel (note that (\subref{fig:sub:protein-dci}) has been normalized and inverted for presentational purposes).  
+The \dch{} is then computed as a standard histogram over this integer image. 
+Each bin in a \dch{} is thereby associated with a complexity range and holds the number of pixels whose depth complexities fall within that range. 
 
 \begin{figure}[t]
   \centering
@@ -540,12 +547,13 @@ During the analysis of our four scenes, we made the observation that many pixels
 This results in rapidly decreasing \dch{}s where the majority of pixels have a complexity that is only a fraction of the global maximum of the scene.
 In our experience, these findings are also applicable to many other scenes.
 
-% Molecular
-%
-One example scene, the protein \emph{human carbonic anhydrase II} (PDB-ID: 2CBA), is depicted in Figure~\ref{fig:protein}. 
-The scene contains protein structures stored in polygonal meshes and volumetric data sources representing electron charge densities. 
-Such protein visualizations are commonly used to examine possible docking positions between the protein and other molecules~\cite{Seeliger2010}. 
+%% Molecular
+%%
+%One example scene, the protein \emph{human carbonic anhydrase II} (PDB-ID: 2CBA), is depicted in Figure~\ref{fig:protein}. 
+%The scene contains protein structures stored in polygonal meshes and volumetric data sources representing electron charge densities. 
+%Such protein visualizations are commonly used to examine possible docking positions between the protein and other molecules~\cite{Seeliger2010}. 
 
+Again, we use the protein scene in Figure~\ref{fig:protein} as an example. 
 From a depth complexity perspective, the protein scene is fairly well behaved.
 The maximum depth complexity is limited and the points with high depth complexity are evenly distributed across the entire scene. 
 The \dch{}, however, decreases rapidly.
