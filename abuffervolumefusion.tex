@@ -410,7 +410,7 @@ In addition, one of the components proposed in this paper shares high resemblanc
   %% create final image first to ensure that it is labeled with (a)
   %% do not show it but store it in a box for later use    
   \savebox\savedProteinBox{%
-    \begin{minipage}[b]{0.51\linewidth}%
+    \begin{minipage}[b]{0.4\linewidth}%
       \centering%
       \includegraphics[width=\linewidth]{snapshots/mol/cgf/render.jpg}%
       \subcaption{\label{fig:sub:protein}%
@@ -420,7 +420,8 @@ In addition, one of the components proposed in this paper shares high resemblanc
   }
   \settoheight{\boxheight}{\usebox\savedProteinBox}
   % 
-  \begin{minipage}[b][\boxheight][b]{0.24\linewidth}
+	\hspace*{\fill}%
+  \begin{minipage}[b][\boxheight][b]{0.18\linewidth}
     \centering%
     \begin{minipage}[t]{0.98\linewidth}
       \centering
@@ -445,7 +446,7 @@ In addition, one of the components proposed in this paper shares high resemblanc
   %% central image
   \usebox\savedProteinBox
   \hfill%
-  \begin{minipage}[b][\boxheight][b]{0.24\linewidth}
+  \begin{minipage}[b][\boxheight][b]{0.18\linewidth}
     \centering%
     \begin{minipage}[t]{0.98\linewidth}
       \centering
@@ -464,6 +465,7 @@ In addition, one of the components proposed in this paper shares high resemblanc
       }
     \end{minipage}%
   \end{minipage}%
+	\hspace*{\fill}%
   % 
   \caption{\label{fig:protein}%
     Visualization of a protein (\emph{human carbonic anhydrase II}) combining hybrid data from different sources.
@@ -765,10 +767,11 @@ The \stencil{} algorithm is outlined below.
   \tcp{\sResolve, loop over all complexity segments}
   \ForEach{$i \in \{8, 16, \dots, \mathrm{max}\}$}{
     activate shader program for complexity segment $i$\;
-    \ForEach{pixel $p \in$ pixels}{
+		\ForAll{unresolved pixels of the framebuffer}{ 
       \tcp{mask pixel if not part of segment class $i$}
-      \If{$\mathrm{depth\ complexity}(p) = i$}{
+      \If{$\mathrm{depth\ complexity}(p) <= i$}{
         resolve segment with \bArray{} of size $i$\;
+				\tcp{mark pixel as resolved}
       }
     }
   }
@@ -821,11 +824,12 @@ The \dloop{} algorithm is outlined below and replaces the \sResolve{} for indivi
   
   \Repeat{all fragments $f \in $ \FragList{} are resolved}{%
     \ForEach{fragment $f \in $ \FragList{}}{
-      \eIf{\Depth($f$) $\ge$ \MinDepth}{
-        discard $f$ in current pass\;
+      \eIf{\Depth($f$) $\le$ \MinDepth}{
+        skip $f$ in current pass\;
       }{
         insert $f$ into \Buffer{} enforcing sorting\;
         \tcp{store at most $n$ elements}
+				\tcp{drop last element on overflow}
       }
     }
     resolve \Buffer{} considering \State\;
