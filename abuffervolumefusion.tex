@@ -332,7 +332,7 @@ A recent comparison of different intermixing schemes was presented by Schubert a
 
 Rendering multiple volumes with arbitrary placement, orientation, and resolution is often associated with computational costs for scene partitioning. 
 To limit the per frame rendering cost, object space is often separated into convex regions homogeneously occupied by a fixed number of volumes. 
-The convex regions are then sorted either using specialized data structures~\cite{grimm04vobjects,lindholm2009fused,Lux2009} or using depth peeling techniques~\cite{Plate2007,rossler08multishader}. 
+The convex regions are then sorted, either using specialized data structures~\cite{grimm04vobjects,lindholm2009fused,Lux2009} or using depth peeling techniques~\cite{Plate2007,rossler08multishader}. 
 Many of these approaches also utilize shader instantiation, similar to one of the components presented in this paper, but do not include solutions for inclusion of semi-transparent geometry. 
 
 Fusing opaque geometry with volumetric data is straightforward in most volume rendering pipelines and does not require a full scene partition~\cite{engel2006volume}. 
@@ -344,25 +344,23 @@ The advantages and disadvantages of the available image space approaches are dir
 
 \noindent\textbf{Transparency rendering.}
 %
-To ensure correct blending order of multiple semi-transparent samples, Order Independent Transparency (OIT) algorithms have been an ongoing research topic for the last thirty years.
+To ensure correct blending order of multiple semi-transparent samples, Order Independent Transparency (OIT) algorithms have been an ongoing research topic for the last thirty years~\cite{Maule2011}. 
 Two of the most widespread approaches are depth peeling and \ab{}s. 
 Our algorithm follows the principles and global memory management of the \ab{}, which yields superior performance for scenes with high depth complexity \cite{Yang2010,Kauker2013}. 
 
 The \ab{} is a leading OIT solution based on the temporary storage and sorting of intermediate pixel fragments. 
 The concept was first introduced by Carpenter~\cite{Carpenter1984}. 
-Subsequent works improved the improved the concept~\cite{ebert1990abuffer,callahan2005kbuffer,bavoil2007multifragkbuffer,myers2007techrep,Vasilakis2014}, including hardware adaptations that were generally limited to a comparatively low number of samples or utilized pre-sorting of primitives. 
+Subsequent works improved the improved the concept~\cite{ebert1990abuffer,callahan2005kbuffer,bavoil2007multifragkbuffer,myers2007techrep,Kerzner2013,Vasilakis2014}, including hardware adaptations that were generally limited to a comparatively low number of samples or utilized pre-sorting of primitives. 
 Further improvements in graphics hardware led to \ab{} variants with support for higher depth complexities including paged variations of the algorithm \cite{kainz2009ray,Crassin2010}, Per-Pixel Linked Lists (PPLL) \cite{Yang2010}, and an alternative called Dynamic Fragment Buffers (DFB) or s-buffer \cite{Maule2012,Vasilakis2012}. 
-The use of atomics have also been addressed~\cite{Kerzner2013}. 
-We direct the interested reader to the survey provided by Maule \etal~\cite{Maule2011} for a comprehensive overview on raster-based transparency techniques.
 %
 Both DFB and PPLL approaches will be described later in detail along with the straightforward Fixed Fragment Buffer (FFB) implementation~\cite{Crassin2010}. 
-However, it should be noted here that the modern \ab{} literature focuses only on management of global GPU memory while employing mostly straightforward techniques for managing local GPU caches. 
+However, it should be noted here that the modern \ab{} literature focuses only on management of global GPU memory. 
 Our work builds upon these methods by improving the management of local GPU caches and hence improves performance for a wide range of \ab{} implementations.
 
 Depth peeling was first introduced by Mammen~\cite{Mammen1989} and has evolved to employ multi-directional and bucket-approximations~\cite{Everitt2001,wexler2005hiddensurface,carr2008depthpeel,Bavoil2008,Liu2009}. 
 %Unfortunately, depth peeling still requires the scene to be re-drawn multiple times, making the apporach less ideal for scenes with potentially high maximum depth complexity. 
 %For scenes with potentially high depth complexities, \ab{} techniques have shown superior performance over depth peeling~\cite{Yang2010,Kauker2013}. 
-Although our main algorithm is not based on depth peeling, the technique arguably remains a close competitor to \ab{}s among OIT solutions and remains an active area of research~\cite{Vasilakis2013,Yu2013}. 
+Although our main algorithm is not based on depth peeling, the technique arguably remains a close competitor to \ab{}s among OIT solutions and remains an active area of research~\cite{Vasilakis2013}. 
 In addition, one of the components proposed in this paper shares high resemblance with the original depth peeling approach. 
 
 %\cite{Yu2013} Depth Peeling for depth-of-field rendering
@@ -410,7 +408,7 @@ In addition, one of the components proposed in this paper shares high resemblanc
   %% create final image first to ensure that it is labeled with (a)
   %% do not show it but store it in a box for later use    
   \savebox\savedProteinBox{%
-    \begin{minipage}[b]{0.4\linewidth}%
+    \begin{minipage}[b]{0.48\linewidth}%
       \centering%
       \includegraphics[width=\linewidth]{snapshots/mol/cgf/render.jpg}%
       \subcaption{\label{fig:sub:protein}%
@@ -421,7 +419,7 @@ In addition, one of the components proposed in this paper shares high resemblanc
   \settoheight{\boxheight}{\usebox\savedProteinBox}
   % 
 	\hspace*{\fill}%
-  \begin{minipage}[b][\boxheight][b]{0.18\linewidth}
+  \begin{minipage}[b][\boxheight][b]{0.24\linewidth}
     \centering%
     \begin{minipage}[t]{0.98\linewidth}
       \centering
@@ -446,7 +444,7 @@ In addition, one of the components proposed in this paper shares high resemblanc
   %% central image
   \usebox\savedProteinBox
   \hfill%
-  \begin{minipage}[b][\boxheight][b]{0.18\linewidth}
+  \begin{minipage}[b][\boxheight][b]{0.24\linewidth}
     \centering%
     \begin{minipage}[t]{0.98\linewidth}
       \centering
@@ -506,11 +504,11 @@ To analyze the complexity of such scenes we thus utilize depth complexity histog
 %The \dch{} can then be computed as a standard histogram over this integer image.
 
 Using the protein scene in Figure~\ref{fig:protein} as an example. 
-The Depth Complexity Histogram (\dch) for the current camera setting is shown in (\subref{fig:sub:protein-dch}). 
-The \dch{} is computed by first rendering a depth complexity image as shown in (\subref{fig:sub:protein-dci}). 
+The Depth Complexity Histogram (\dch) for the current camera setting is shown in \ref{fig:protein}(\subref{fig:sub:protein-dch}). 
+The \dch{} is computed by first rendering a depth complexity image as shown in \ref{fig:protein}(\subref{fig:sub:protein-dci}). 
 When rendering the complexity image, both shading and blending are first de-activated. 
 All geometry and volume bounding boxes are then ``rendered'' into an integer image which pixels are used as atomic counters incremented by the incoming fragments. 
-Each pixel value in the complexity image thus holds the number of fragments for that pixel (note that (\subref{fig:sub:protein-dci}) has been normalized and inverted for presentational purposes).  
+Each pixel value in the complexity image thus holds the number of fragments for that pixel \ref{fig:protein}(note that (\subref{fig:sub:protein-dci}) has been normalized and inverted for presentational purposes).  
 The \dch{} is then computed as a standard histogram over this integer image. 
 Each bin in a \dch{} is thereby associated with a complexity range and holds the number of pixels whose depth complexities fall within that range. 
 
@@ -559,7 +557,7 @@ Again, we use the protein scene in Figure~\ref{fig:protein} as an example.
 From a depth complexity perspective, the protein scene is fairly well behaved.
 The maximum depth complexity is limited and the points with high depth complexity are evenly distributed across the entire scene. 
 The \dch{}, however, decreases rapidly.
-Figure~\ref{fig:protein}(\subref{fig:sub:protein-dch}) shows a logarithmic plot of the \dch{} (the dominance of even numbered complexities is a result of closed geometry).
+Note that the \dch{} in Figure~\ref{fig:protein}(\subref{fig:sub:protein-dch}) is plotted logarithmically (the dominance of even numbered complexities is a result of closed geometry).
 The majority of all pixels ($68\,\%$) have a depth complexity of 8 or less, whereas only very few pixels ($6.6\,\%$) have a complexity larger than 17 with a maximum of 46 for this specific camera setting. 
 
 \dch{}s are not only dependent on scene content but also on the camera settings.
@@ -822,12 +820,13 @@ The \dloop{} algorithm is outlined below and replaces the \sResolve{} for indivi
   set \MinDepth{} to 0\;
   initialize \State\;
   
+  \tcp{\sResolve}
   \Repeat{all fragments $f \in $ \FragList{} are resolved}{%
     \ForEach{fragment $f \in $ \FragList{}}{
       \eIf{\Depth($f$) $\le$ \MinDepth}{
         skip $f$ in current pass\;
       }{
-        insert $f$ into \Buffer{} enforcing sorting\;
+        insert $f$ into \Buffer{} with insertion sort\;
         \tcp{store at most $n$ elements}
 				\tcp{drop last element on overflow}
       }
@@ -1062,9 +1061,8 @@ All performance results for \dloop{} were measured with a \bArray{} size set to 
 For each test, frame times were computed as the average over $30$ seconds of rendering as the camera rotated around the scene at fixed distance. 
 Early-ray termination was enabled for transparency values less than $0.02$ during all benchmarks.
 
-Due to a major performance penalty, we were unable to achieve results for the DFB on the same level as reported by Maule~\cite{Maule2012}. 
-The penalty manifested as a $50\,$ms--$200\,$ms delay associated with the context switch between CUDA Thrust and OpenGL that is required by the scan step.
-It was persistent across different GPUs and drivers and was also present in a minimal stand-alone DFB implementation.
+Due to a performance penalty associated with a CUDA/OpenGL context switch, we were unable to achieve results for the DFB on the same level as reported by Maule~\cite{Maule2012}. 
+The penalty manifested as a $50\,$ms--$200\,$ms delay associated with the scan step and was persistent across different GPUs and drivers and was also present in a minimal stand-alone DFB implementation.
 The results for the DFB approach reported in Figure~\ref{fig:performance} include this penalty.
 
 Supported by the performance graphs, we can say that both \stencil{} and \dloop{} are capable of providing significant performance gains for a large variety of configurations. 
@@ -1082,6 +1080,7 @@ Results are shown in Figure~\ref{fig:viewdep-quad} and confirm that the performa
 
 \begin{figure}[t]
   \centering
+  \begin{minipage}{0.9\linewidth}\centering 
   \begin{minipage}{1.0\linewidth}\centering 
     \includegraphics[width=0.14\linewidth]{figures/quads1}\hfill 
     \includegraphics[width=0.14\linewidth]{figures/quads2}\hfill 
@@ -1092,6 +1091,7 @@ Results are shown in Figure~\ref{fig:viewdep-quad} and confirm that the performa
   % 
   \begin{minipage}{1.0\linewidth}\centering
     \includegraphics[width=\linewidth]{figures/plot-viewdep-quad-tall} 
+  \end{minipage}
   \end{minipage}
   \caption{\label{fig:viewdep-quad}%
     Performance for a synthetic data set.
@@ -1121,7 +1121,7 @@ Results are shown in Figure~\ref{fig:viewdep-quad} and confirm that the performa
 
 In this paper, we address the challenge of interactive exploration of complex hybrid data. 
 Two adaptive data handling components are proposed to be combined with prevalent \ab{} techniques to form a final rendering algorithm. 
-Both components are based on the observations we made when analyzing the histogram of the respective depth complexities of hybrid data sets as acquired in modern imaging-based sciences. 
+%Both components are based on the observations made when analyzing the histogram of the respective depth complexities of hybrid data sets as acquired in modern imaging-based sciences. 
 %By minimizing the allocated local cache memory (\stencil) and performing a delayed depth sorting (\dloop), we are able to improve the previously inefficient management of local GPU caches caused by a few pixel with prohibitively high depth complexities. 
 %The two optimizations were explicitly designed to better adapt the rendering algorithm to the rapidly decreasing \dch{}s commonly found in hybrid data scenes. 
 Of the two, \dloop{} is better equipped to deal with very high complexities but does so at the cost of potential artifacts from z-fighting while \stencil{} performs well for moderate complexities with exact results. 
@@ -1129,11 +1129,9 @@ Optionally, the components can be combined to achieve support for high depth com
 
 An interesting consequence of our work is the potential alleviation of the traditional trade-off between performance and depth-support. 
 We believe that this aspect makes our work valuable also in other areas of visualization or computer graphics that employ \ab{} based techniques.
-%In particular, techniques relying on \ab{}s can benefit from it since both \stencil{} and \dloop{} are compatible with most \ab{} solutions using global memory management. 
-
+%
 In the future, we see several opportunities to improve the proposed methods. 
-For instance, by combining our algorithm with space partitioning data structures, we might even get higher performance gains. 
-However, perhaps an even more interesting avenue would be to analyze the trade-offs that can be made when blending multiple semi-transparent layers. 
+For instance, an interesting avenue would be to analyze the trade-offs that can be made when blending multiple semi-transparent layers. 
 Apart from this, the proposed technique also makes transparency more viable for a broader range of visualization techniques. 
 For example, it will now be possible to encode fiber tracking uncertainties in the alpha channel of the visualized fibers without eliminating the possibility to also visualize a co-registered volume. 
 
@@ -1295,13 +1293,13 @@ For example, it will now be possible to encode fiber tracking uncertainties in t
 
 \begin{figure*}[t]
   \centering
-  \begin{minipage}[b]{0.36\linewidth}\centering
+  \begin{minipage}[b]{0.3\linewidth}\centering
     \includegraphics[width=1.0\linewidth]{snapshots/flow/cgf/screenshot_Flow.jpg}
     \subcaption{\label{fig:sub:flow}%
       blood flow
     }
   \end{minipage}\hfill
-  \begin{minipage}[b]{0.36\linewidth}\centering
+  \begin{minipage}[b]{0.3\linewidth}\centering
     \includegraphics[trim={18cm 16cm 8cm 10cm}, clip, width=1.0\linewidth]{snapshots/flow/cgf/screenshot_Flow.jpg}
     \subcaption{\label{fig:sub:flow-zoom}%
       zoomed view
