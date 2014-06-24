@@ -378,7 +378,7 @@ The \ab{} is a leading OIT solution based on the temporary storage and sorting o
 } 
 \minor{
 The concept was first introduced by Carpenter~\cite{Carpenter1984}. 
-Subsequent works improved the improved the concept~\cite{ebert1990abuffer,bavoil2007multifragkbuffer,myers2007techrep,Kerzner2013,Vasilakis2014}, including hardware adaptations that were generally limited to a comparatively low number of samples or utilized pre-sorting of primitives. 
+Subsequent works improved the concept~\cite{ebert1990abuffer,bavoil2007multifragkbuffer,myers2007techrep,Kerzner2013,Vasilakis2014}, including hardware adaptations that were generally limited to a comparatively low number of samples or utilized pre-sorting of primitives. 
 Further improvements in graphics hardware led to \ab{} variants with support for higher depth complexities including paged variations of the algorithm \cite{kainz2009ray,Crassin2010}, Per-Pixel Linked Lists (PPLL) \cite{Yang2010}, and an alternative called Dynamic Fragment Buffers (DFB) or s-buffer \cite{Maule2012,Vasilakis2012}. 
 } 
 %
@@ -534,12 +534,12 @@ To analyze the complexity of such scenes we thus utilize depth complexity histog
 %The \dch{} can then be computed as a standard histogram over this integer image.
 
 \new{
-Using the protein scene in Figure~\ref{fig:protein} as an example. 
-The Depth Complexity Histogram (\dch) for the current camera setting is shown in \ref{fig:protein}(\subref{fig:sub:protein-dch}). 
+Using the protein scene in Figure~\ref{fig:protein} as an example, the Depth Complexity Histogram (\dch) for this camera setting is shown in \ref{fig:protein}(\subref{fig:sub:protein-dch}). 
 The \dch{} is computed by first rendering a depth complexity image as shown in \ref{fig:protein}(\subref{fig:sub:protein-dci}). 
-When rendering the complexity image, both shading and blending are first de-activated. 
-All geometry and volume bounding boxes are then ``rendered'' into an integer image which pixels are used as atomic counters incremented by the incoming fragments. 
-Each pixel value in the complexity image thus holds the number of fragments for that pixel \ref{fig:protein}(note that (\subref{fig:sub:protein-dci}) has been normalized and inverted for presentational purposes).  
+While rendering the complexity image both, shading and blending are disabled. 
+All geometries and volume bounding boxes are rendered into an integer image.
+The pixels of this image act as atomic counters and are incremented by the incoming fragments. 
+Each pixel of the complexity image thus holds the number of fragments as depicted in Figure~\ref{fig:protein} (note that (\subref{fig:sub:protein-dci}) has been normalized and inverted for presentational purposes).  
 The \dch{} is then computed as a standard histogram over this integer image. 
 Each bin in a \dch{} is thereby associated with a complexity range and holds the number of pixels whose depth complexities fall within that range. 
 } 
@@ -591,7 +591,8 @@ Again, we use the protein scene in Figure~\ref{fig:protein} as an example.
 From a depth complexity perspective, the protein scene is fairly well behaved.
 The maximum depth complexity is limited and the points with high depth complexity are evenly distributed across the entire scene. 
 The \dch{}, however, decreases rapidly.
-\minor{Note that the \dch{} in Figure~\ref{fig:protein}(\subref{fig:sub:protein-dch}) is plotted logarithmically (the dominance of even numbered complexities is a result of closed geometry).} 
+\minor{Note that the \dch{} in Figure~\ref{fig:protein}(\subref{fig:sub:protein-dch}) is plotted logarithmically.
+  The dominance of even-numbered depth complexities is a result of closed geometries.} 
 The majority of all pixels ($68\,\%$) have a depth complexity of 8 or less, whereas only very few pixels ($6.6\,\%$) have a complexity larger than 17 with a maximum of 46 for this specific camera setting. 
 
 \dch{}s are not only dependent on scene content but also on the camera settings.
@@ -771,7 +772,7 @@ The full rendering algorithm, optimized for geometry intensive fusion scenes, is
 
 The objective of the proposed \stencil{} component is to limit the amount of unused memory in the local cache by performing the \sResolve{} with \bArray{}s that better correspond to the depth complexity of individual pixels. 
 \minor{
-Due to restrictions in GPU cache allocations, the optimization of per-pixel array sizes requires multiple shader programs to be instantiated with varying \bArray{} sizes.
+Due to restrictions in GPU cache allocations, the optimization of per-pixel array sizes requires multiple shader programs to be instantiated for different \bArray{} sizes.
 }
 Rather than using a unique shader for every possible \bArray{} size we use a smaller set of pre-defined array sizes. 
 \minor{
@@ -999,7 +1000,7 @@ Scene configurations will be described next in Section~\ref{sec:scenarios} follo
 \item[Figure~\ref{fig:space}, space:]% 
   The space data set depicts results of a multi-variate simulation of a time-dependent 3D magnetohydrodynamics system of the heliosphere during a coronal mass ejection event.
   This particular systems is currently used in space weather prediction \cite{Xie2004}.
-  The scene consists of two volumes, showing the number of charged particles and the energy density, and three iso-surfaces derived from the energy densities.
+  The scene consists of two volumes, showing the number of charged particles and the energy density, and three isosurfaces derived from the energy densities.
 
 \item[Figure~\ref{fig:neuro}, medical:]% 1041 + 637 streamlines
 %% old numbers: 661 + 448 tracts
@@ -1332,7 +1333,7 @@ For example, it may now be possible to encode fiber tracking uncertainties in th
   % 
   \caption{\label{fig:neuro}%
     Fused visualization of hybrid data for the purpose of neurosurgical planning.
-    The scene is particularly complex in areas where the DTI fibers converge towards two main bundles. 
+    The scene is particularly complex in areas where the DTI fibers converge toward two main bundles. 
     (\subref{fig:sub:neuro})~full scene, (\subref{fig:sub:neuro-zoom})~zoomed view, and (\subref{fig:sub:neuro-dch})~the depth complexity histogram (\dch{}, log scale) of~(\subref{fig:sub:neuro}).
     %% Performing these rendering in real time is essential in order for a user to explore the data, but challenging due to the high depth complexities of the scenes. 
     %perfnumber
