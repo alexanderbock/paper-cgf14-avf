@@ -534,13 +534,13 @@ To analyze the complexity of such scenes we thus utilize depth complexity histog
 %The \dch{} can then be computed as a standard histogram over this integer image.
 
 \new{
-For an example of a Depth Complexity Histogram (\dch), we use the protein scene in Figure~\ref{fig:protein}, where the DCH for the current camera setting is shown in (\subref{fig:sub:protein-dch}). 
+As an example for the Depth Complexity Histogram (\dch), we use the protein scene in Figure~\ref{fig:protein}, where the DCH for the shown camera setting is depicted in (\subref{fig:sub:protein-dch}). 
 The \dch{} is computed by first rendering a depth complexity image as shown in (\subref{fig:sub:protein-dci}). 
 While rendering the complexity image, both shading and blending are disabled. 
 All geometries and volume bounding boxes are rendered into an integer image aligned with the current viewport. 
 The pixels of this image act as atomic counters and are incremented by the incoming fragments. 
-Each pixel of the complexity image thus holds the number of fragments (note that (\subref{fig:sub:protein-dci}) has been normalized and inverted for presentational purposes such that white pixels represent low complexity and dark pixels represent high complexity). 
-The \dch{} in (\subref{fig:sub:protein-dch}) is then computed as a standard histogram over this integer image. 
+Each pixel of the complexity image thus holds the number of fragments (note that Figure~\ref{fig:protein}(\subref{fig:sub:protein-dci}) has been normalized and inverted for presentational purposes such that white pixels represent low complexity and dark pixels represent high complexity). 
+The \dch{} in Figure~\ref{fig:protein}(\subref{fig:sub:protein-dch}) is then computed as a standard histogram over this integer image. 
 Each bin in a \dch{} is thereby associated with a complexity range and holds the number of pixels whose depth complexities fall within that range. 
 } 
 
