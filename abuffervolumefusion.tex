@@ -534,13 +534,13 @@ To analyze the complexity of such scenes we thus utilize depth complexity histog
 %The \dch{} can then be computed as a standard histogram over this integer image.
 
 \new{
-Using the protein scene in Figure~\ref{fig:protein} as an example, the Depth Complexity Histogram (\dch) for this camera setting is shown in \ref{fig:protein}(\subref{fig:sub:protein-dch}). 
-The \dch{} is computed by first rendering a depth complexity image as shown in \ref{fig:protein}(\subref{fig:sub:protein-dci}). 
-While rendering the complexity image both, shading and blending are disabled. 
-All geometries and volume bounding boxes are rendered into an integer image.
+For an example of a Depth Complexity Histogram (\dch), we use the protein scene in Figure~\ref{fig:protein}, where the DCH for the current camera setting is shown in (\subref{fig:sub:protein-dch}). 
+The \dch{} is computed by first rendering a depth complexity image as shown in (\subref{fig:sub:protein-dci}). 
+While rendering the complexity image, both shading and blending are disabled. 
+All geometries and volume bounding boxes are rendered into an integer image aligned with the current viewport. 
 The pixels of this image act as atomic counters and are incremented by the incoming fragments. 
-Each pixel of the complexity image thus holds the number of fragments as depicted in Figure~\ref{fig:protein} (note that (\subref{fig:sub:protein-dci}) has been normalized and inverted for presentational purposes).  
-The \dch{} is then computed as a standard histogram over this integer image. 
+Each pixel of the complexity image thus holds the number of fragments (note that (\subref{fig:sub:protein-dci}) has been normalized and inverted for presentational purposes such that white pixels represent low complexity and dark pixels represent high complexity). 
+The \dch{} in (\subref{fig:sub:protein-dch}) is then computed as a standard histogram over this integer image. 
 Each bin in a \dch{} is thereby associated with a complexity range and holds the number of pixels whose depth complexities fall within that range. 
 } 
 
@@ -592,7 +592,7 @@ From a depth complexity perspective, the protein scene is fairly well behaved.
 The maximum depth complexity is limited and the points with high depth complexity are evenly distributed across the entire scene. 
 The \dch{}, however, decreases rapidly.
 \minor{Note that the \dch{} in Figure~\ref{fig:protein}(\subref{fig:sub:protein-dch}) is plotted logarithmically.
-  The dominance of even-numbered depth complexities is a result of closed geometries.} 
+The dominance of even-numbered depth complexities is a result of closed geometries.} 
 The majority of all pixels ($68\,\%$) have a depth complexity of 8 or less, whereas only very few pixels ($6.6\,\%$) have a complexity larger than 17 with a maximum of 46 for this specific camera setting. 
 
 \dch{}s are not only dependent on scene content but also on the camera settings.
