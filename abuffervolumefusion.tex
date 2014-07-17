@@ -16,8 +16,8 @@
 % \Education              % uncomment for Education contribution
 %
 % --- for  CGF Journal
-\JournalSubmission    % uncomment for submission to Computer Graphics Forum
-% \JournalPaper         % uncomment for final version of Journal Paper
+%\JournalSubmission    % uncomment for submission to Computer Graphics Forum
+\JournalPaper         % uncomment for final version of Journal Paper
 %
 % --- for  CGF Journal: special issue
 % \SpecialIssueSubmission    % uncomment for submission to Computer Graphics Forum, special issue
@@ -56,21 +56,16 @@
 
 
 
-%\usepackage{amsmath}
-%\usepackage{mathptmx}
-%\usepackage{graphicx}
-%\usepackage{times}
 \usepackage[usenames,dvipsnames,svgnames]{xcolor}
 \usepackage{enumitem}
 \usepackage{subcaption}
 \usepackage{flushend}
 \usepackage{multirow}
 \usepackage{booktabs}
-
 \usepackage{tikz}
 \usepackage{relsize}
-
 \usepackage{algorithm2e}
+
 
 \makeatletter
 \newcommand{\removelatexerror}{\let\@latex@error\@gobble}
@@ -86,51 +81,34 @@
 \SetCommentSty{emph}
 
 
-\setlength{\fboxsep}{0pt}
-
-
 \def\etal{\emph{et al.}}
-
+\setlength{\fboxsep}{0pt}
 \newcommand{\red}[1]{{\color{red}#1}}
 \newcommand{\yellow}[1]{{\color{Goldenrod}#1}}
 \newcommand{\green}[1]{{\color{PineGreen}#1}}
-
 \newcommand{\minor}[1]{\yellow{#1}}
 \newcommand{\new}[1]{\green{#1}}
-
 \newcommand{\todo}[1]{{\color{red}\emph{(#1)}}}
-
 \newcommand{\remark}[1]{{\color{blue!80!white}\textbf{Remark:} #1}}
-
-
 \newcommand{\bin}[1]{b^{#1}}
 \newcommand{\dbin}[2]{b^{#1-#2}}
 \newcommand{\code}[1]{\texttt{#1}}
-
 \newcommand{\POne}{Problem 1}
 \newcommand{\PTwo}{Problem 2}
-
 \newcommand{\ab}{\mbox{A-buffer}}
 \newcommand{\dc}{DC}
 \newcommand{\dch}{DCH}
-%\newcommand{\dchs}{DCHs}
 \newcommand{\dci}{DCI}
 \newcommand{\stencil}{ppAO}
 \newcommand{\dloop}{ppDP}
 
-
 \newlength{\imgWidth}
 \setlength{\imgWidth}{0.23\textwidth}
-
 \newlength{\boxheight}
-
 \newsavebox{\savedProteinBox}
-
 \newif\ifSplitBoxFramed
-
 \newcommand{\enableSplitImgFrame}{\SplitBoxFramedtrue}
 \newcommand{\disableSplitImgFrame}{\SplitBoxFramedfalse}
-
 \enableSplitImgFrame
 
 %% split two images (param 1, param 2)  along a diagonal line
@@ -172,15 +150,13 @@
 }
 
 
-
-
 % ---------------------------------------------------------------------
 % EG author guidelines plus sample file for EG publication using LaTeX2e input
 % D.Fellner, v1.17, Sep 23, 2010
 
 %% original Eurographics Title
 \title[Hybrid Data Visualization]%
-      {Hybrid Data Visualization\\ Based On Depth Complexity Histogram Analysis}
+      {Hybrid Data Visualization\\Based On Depth Complexity Histogram Analysis}
 
 % % for anonymous conference submission please enter your SUBMISSION ID
 % % instead of the author's name (and leave the affiliation blank) !!
@@ -199,26 +175,26 @@
 \def\AB{A.~Bock}
 \def\AY{A.~Ynnerman}
 \def\TR{T.~Ropinski}
-%
-%%%% Author and Affiliation (multiple authors with single affiliations).
- %%\author[S.~Lindholm et al.]{%
-		%%\SL \thanks{e-mail: stefan.lindholm@liu.se},%
-		%%\MF, \ES, \AB, \AY,%
-		%%and \TR \thanks{e-mail: timo.ropinski@liu.se}\\%
-		%%Scientific Visualization Group, 
-		%%Department of Science and Technology, 
-		%%Link{\"o}ping University}
-%
-%%% Emails below author names
-%\author[S.~Lindholm et al.]%
-		%{\SL, \MF, \ES, \AB, \AY, and \TR\\% 
+
+%%% Author and Affiliation (multiple authors with single affiliations).
+ %\author[S.~Lindholm et al.]{%
+		%\SL \thanks{e-mail: stefan.lindholm@liu.se},%
+		%\MF, \ES, \AB, \AY,%
+		%and \TR \thanks{e-mail: timo.ropinski@liu.se}\\%
 		%Scientific Visualization Group, 
 		%Department of Science and Technology, 
-		%Link{\"o}ping University\\% 
-		%\{stefan.lindholm$|$timo.ropinski\}@liu.se}
+		%Link{\"o}ping University}
 
-\author[CGF-14-EG-016.R1]
-       {CGF-14-EG-016.R1}
+%% Emails below author names
+\author[S.~Lindholm et al.]%
+		{\SL, \MF, \ES, \AB, \AY, and \TR\\% 
+		Scientific Visualization Group, 
+		Department of Science and Technology, 
+		Link{\"o}ping University\\% 
+		\{stefan.lindholm$|$timo.ropinski\}@liu.se}
+
+%\author[CGF-14-EG-016.R1]
+       %{CGF-14-EG-016.R1}
 
 % ------------------------------------------------------------------------
 
@@ -256,20 +232,16 @@
 \begin{abstract}
 %
 In many cases, only the combination of geometric and volumetric data sets is able to describe a single phenomenon under observation when visualizing large and complex data.
-%% Problem:
-%% 1. transparent geometry, requires sorting
-%% 2. fusing/combining volume rendering with the geometry
+%% Problem: 1. transparent geometry, requires sorting, 2. fusing/combining volume rendering with the geometry
 When semi-transparent geometry is present, correct rendering results require sorting of transparent structures. 
 Additional complexity is introduced as the contributions from volumetric data have to be partitioned according to the geometric objects in the scene.
 %% Solution: (already known)
 The \ab{}, an enhanced framebuffer with additional per-pixel information, has previously been introduced to deal with the complexity caused by transparent objects. 
 %% our stuff/contribution:
 In this paper, we present an optimized rendering algorithm for hybrid volume-geometry data based on the \ab{} concept. 
-We propose two novel components for modern GPUs that \minor{tailor} memory utilization to the depth complexity of individual pixels.
-The proposed components are compatible with modern \ab{} implementations and yield performance gains of up to eight times compared to existing approaches \new{through reduced allocation and reuse of fast cache memory}. 
- %perfnumber
+We propose two novel components for modern GPUs that tailor memory utilization to the depth complexity of individual pixels.
+The proposed components are compatible with modern \ab{} implementations and yield performance gains of up to eight times compared to existing approaches through reduced allocation and reuse of fast cache memory. 
 %
-%The proposed components make use of modern GPUs and are compatible with commonly used \ab{} implementations. 
 We demonstrate the applicability of our approach and its performance with several examples from molecular biology, space weather, and medical visualization containing both, volumetric data and geometric structures.
 
 \begin{classification} % according to http://www.acm.org/class/1998/
@@ -285,37 +257,13 @@ We demonstrate the applicability of our approach and its performance with severa
 \section{Introduction}
 \label{sec:introduction}
 
-%\remark{Major Revision:
-%\begin{itemize}
-%\item clearly show novelty
-%\item validation of techniques to show effectiveness
-%\item improved comparison + demonstration of improvements (dyn.\ fragment buffer)
-%\item presentation
-%\end{itemize}
-%}
-%\remark{Outline for introduction
-%  \begin{itemize}
-%  \item motivation: adaptation of \ab{} for
-%  \item many hybrid scenes (general context)
-%  \item Fusion = geom + volume
-%  \item OIT driven (that's the core problem)
-%  \item store, sort, eval
-%  \item contribution -> applicable in general context
-%  \item performance comparison
-%  \end{itemize}
-%}
-%\todo{Max.~12 pages!!!}
-
 With the widespread use of imaging technologies in data intensive research fields, visualization becomes an enabling technology that supports the exploration of acquired data sets. 
 A recent trend is the multitude of data that arise not only in the form of multimodal volumetric data sets but also from geometric representations, which may be derived from the data or are acquired in different ways.
 Consequently, a challenge in visualization research is the efficiency and effectiveness at which this hybrid data can be rendered in a single setting. 
 In many cases the integrated geometry is of similar or higher complexity than the volumetric data with which it should be combined. 
 While modern volume rendering supports the inspection of otherwise dense data sets by facilitating semi-transparency, additional challenges arise when multiple volumes are combined with geometric data. 
 Recent work suggests that geometric representations also benefit from semi-transparent properties~\cite{Guenther:2013:TOG}. 
-\new{
-%Nevertheless, when fusing these two types of data in a semi-transparent manner, current state-of-the-art algorithms are not always guaranteed to deliver interactive exploration as complexity increases.
 Nevertheless, current state-of-the-art algorithms cannot always deliver interactive exploration for complex and semi-transparent hybrid data. 
-} 
 Interactivity is, however, an essential feature when exploring scientific data sets.
 
 In this paper, we improve upon existing techniques to facilitate efficient visualization of hybrid data sets as they occur in today's imaging-dependent areas of science. 
@@ -325,19 +273,13 @@ This results in a performance bottleneck as well as in increased memory usage.
 As these shortcomings hinder interactive exploration of many hybrid data sets, we have analyzed several of these data sets from different real-world scenarios with the goal to develop an optimized rendering algorithm enabling interactive exploration. 
 As a tool in the analysis we have used {Depth Complexity Histograms} (\dch) that correspond to the observed depth complexity across all pixels in the rendered image for a given scene and camera setting. 
 The \dch{}s have been used to identify trends in the global distribution for scenes with hybrid data and to determine how these trends relate to rendering complexity. 
-% Technical
+%% Technical
 Based on the similarities of the occurring distributions, we propose two novel components which we combine with existing techniques to form an optimized rendering algorithm for hybrid data. 
-\new{
 The first component minimizes the allocated size in fast cache memory by adjusting the allocation to pixel depth complexity. 
 The second component partitions the depth sorting similarly to depth peeling and recycles a smaller amount of allocated memory. 
-} 
 As a result, computational throughput is increased and the maximum supported depth complexity is less dependent on the amount of available local GPU memory. 
-The components provide between three and eightfold performance increase compared to existing algorithms. %perfnumber
+The components provide between three and eightfold performance increase compared to existing algorithms. 
 These qualities enable the interactive visualization of large and complex hybrid data sets at interactive frame rates, which is one of the key ingredients for enabling scientific discoveries in data-intense sciences.
-
-
-
-
 
 
 
@@ -346,8 +288,6 @@ These qualities enable the interactive visualization of large and complex hybrid
 
 \noindent\textbf{Data fusion.} 
 %
-%Hybrid data visualization is a growing field, providing simultaneous exploration of multiple data sources. 
-%One part of this problem is adressed in the literature on fusion of multiple volumes with arbitrary placement, orientation and resolution. 
 One aspect of hybrid data rendering relates to fusion of multiple volumetric sources.
 Several publications have investigated how samples from multiple sources should be blended, including different levels of intermixing~\cite{cai99intermixing}. 
 A recent comparison of different intermixing schemes was presented by Schubert and Scholl~\cite{Schubert2011}. 
@@ -366,54 +306,22 @@ The advantages and disadvantages of the available image space approaches are dir
 
 \noindent\textbf{Transparency rendering.}
 %
-To ensure correct blending order of multiple semi-transparent samples, Order Independent Transparency (OIT) algorithms have been an ongoing research topic for the last thirty years\minor{~\cite{Maule2011}}. 
+To ensure correct blending order of multiple semi-transparent samples, Order Independent Transparency (OIT) algorithms have been an ongoing research topic for the last thirty years~\cite{Maule2011}. 
 Two of the most widespread approaches are depth peeling and \ab{}s. 
 Our algorithm follows the principles and global memory management of the \ab{}, which yields superior performance for scenes with high depth complexity \cite{Yang2010,Kauker2013}. 
 
-%%% Removed for space
-% callahan2005kbuffer
-
-\new{
 The \ab{} is a leading OIT solution based on the temporary storage and sorting of intermediate pixel fragments. 
-} 
-\minor{
 The concept was first introduced by Carpenter~\cite{Carpenter1984}. 
 Subsequent works improved the concept~\cite{ebert1990abuffer,bavoil2007multifragkbuffer,myers2007techrep,Kerzner2013,Vasilakis2014}, including hardware adaptations that were generally limited to a comparatively low number of samples or utilized pre-sorting of primitives. 
 Further improvements in graphics hardware led to \ab{} variants with support for higher depth complexities including paged variations of the algorithm \cite{kainz2009ray,Crassin2010}, Per-Pixel Linked Lists (PPLL) \cite{Yang2010}, and an alternative called Dynamic Fragment Buffers (DFB) or s-buffer \cite{Maule2012,Vasilakis2012}. 
-} 
 %
 Both DFB and PPLL approaches will be described later in detail along with the straightforward Fixed Fragment Buffer (FFB) implementation~\cite{Crassin2010}. 
 However, it should be noted here that the modern \ab{} literature focuses only on management of global GPU memory. 
 Our work builds upon these methods by improving the management of local GPU caches and hence improves performance for a wide range of \ab{} implementations.
 
 Depth peeling was first introduced by Mammen~\cite{Mammen1989} and has evolved to employ multi-directional and bucket-approximations~\cite{Everitt2001,carr2008depthpeel,Bavoil2008,Liu2009}. 
-%Unfortunately, depth peeling still requires the scene to be re-drawn multiple times, making the apporach less ideal for scenes with potentially high maximum depth complexity. 
-%For scenes with potentially high depth complexities, \ab{} techniques have shown superior performance over depth peeling~\cite{Yang2010,Kauker2013}. 
-Although our main algorithm is not based on depth peeling, the technique arguably remains a close competitor to \ab{}s among OIT solutions \new{and remains an active area of research~\cite{Vasilakis2013}}. 
+Although our main algorithm is not based on depth peeling, the technique arguably remains a close competitor to \ab{}s among OIT solutions and remains an active area of research~\cite{Vasilakis2013}. 
 In addition, one of the components proposed in this paper shares high resemblance with the original depth peeling approach. 
-
-%\cite{Yu2013} Depth Peeling for depth-of-field rendering
-%\cite{Vasilakis2012} s-buffer
-%\cite{Vasilakis2013} z-fighting
-%\cite{Vasilakis2014} $k^+$-buffer
-
-%% http://developer.download.nvidia.com/presentations/2007/siggraph/stencil_routed_a-Buffer_sigg07.ppt
-%\cite{Myers2007} Stencil routed \ab{} \red{(Predecessor to \ab{})}
-%\cite{Crassin2010} OpenGL 4.0+ ABuffer V2.0: Linked lists of fragment pages \red{(our implementation)}
-
-% Demo % http://developer.amd.com/resources/documentation-articles/samples-demos/gpu-demos/ati-radeon-hd-5000-series-graphics-real-time-demos/
-% Talk % http://amddevcentral.com/afds/assets/presentations/2041_final.pdf 
-% Talk % http://cryze.bplaced.net/papers/CS448s-10-11-oit.pdf % http://developer.amd.com/resources/documentation-articles/conference-presentations/gpu-technical-publications/
-% Paper % http://kesen.realtimerendering.com/egsr2010Papers.htm
-%\cite{Yang2010} Real-time concurrent linked list construction on the GPU (AMD)
-
-%\cite{Enderton2010} Stochastic Transparency
-
-% http://www.vis.uni-stuttgart.de/uploads/tx_vispublications/egpgv13_molsurfoit.pdf
-%\cite{Kauker2013} Rendering Molecular Surfaces using Order-Independent Transparency
-
-
-
 
 
 
@@ -517,32 +425,23 @@ At the same time, most scenes often feature non-uniform complexity distributions
 
 % Molecular
 %
-\new{
 The first hybrid data scene is shown in Figure~\ref{fig:protein} and depicts the protein \emph{human carbonic anhydrase II} (PDB-ID: 2CBA). 
 The scene contains protein structures stored in polygonal meshes and volumetric data sources representing electron charge densities. 
 Such protein visualizations are commonly used to examine possible docking positions between the protein and other molecules~\cite{Seeliger2010}. 
 %
 To analyze the complexity of such scenes we thus utilize depth complexity histograms.
-} 
 
 \subsection{Depth Complexity Histograms}
 \label{sec:dch}
    
-%We use the term Depth Complexity Histogram (\dch) for a histogram that shows the distribution of depth complexities for all pixels given for a specific scene and camera setting. 
-%Each bin in a \dch\ is associated with a complexity range and holds the number of pixels whose depth complexities fall within that range (cf.\ Figure~\ref{fig:protein}(\subref{fig:sub:protein-dch})). 
-%Computing a \dch{} is done by accumulating an integer ``image'' of the scene during a single rendering pass where each pixel value is treated as an atomic counter that is incremented once for each incoming fragment.
-%The \dch{} can then be computed as a standard histogram over this integer image.
-
-\new{
 As an example for the Depth Complexity Histogram (\dch), we use the protein scene in Figure~\ref{fig:protein}, where the DCH for the shown camera setting is depicted in (\subref{fig:sub:protein-dch}). 
 The \dch{} is computed by first rendering a depth complexity image as shown in (\subref{fig:sub:protein-dci}) (note that the image shown has been normalized and inverted for presentational purposes). 
 When rendering the complexity image, both shading and blending are disabled. 
 All geometries and volume bounding boxes are rendered into an integer image aligned with the current viewport. 
 The pixels of this image act as atomic counters and are incremented by the incoming fragments. 
-Each pixel of the complexity image thus holds the number of fragments. %(note that Figure~\ref{fig:protein}(\subref{fig:sub:protein-dci}) has been normalized and inverted for presentational purposes such that white pixels represent low complexity and dark pixels represent high complexity). 
+Each pixel of the complexity image thus holds the number of fragments. 
 The \dch{} is then computed as a standard histogram over this integer image. 
 Each bin in a \dch{} is thereby associated with a complexity range and holds the number of pixels whose depth complexities fall within that range. 
-} 
 
 \begin{figure}[t]
   \centering
@@ -579,20 +478,12 @@ During the analysis of our four scenes, we made the observation that many pixels
 This results in rapidly decreasing \dch{}s where the majority of pixels have a complexity that is only a fraction of the global maximum of the scene.
 In our experience, these findings are also applicable to many other scenes.
 
-%% Molecular
-%%
-%One example scene, the protein \emph{human carbonic anhydrase II} (PDB-ID: 2CBA), is depicted in Figure~\ref{fig:protein}. 
-%The scene contains protein structures stored in polygonal meshes and volumetric data sources representing electron charge densities. 
-%Such protein visualizations are commonly used to examine possible docking positions between the protein and other molecules~\cite{Seeliger2010}. 
-
-\minor{
 Again, we use the protein scene in Figure~\ref{fig:protein} as an example. 
-} 
 From a depth complexity perspective, the protein scene is fairly well behaved.
 The maximum depth complexity is limited and the points with high depth complexity are evenly distributed across the entire scene. 
 The \dch{}, however, decreases rapidly.
-\minor{Note that the \dch{} in Figure~\ref{fig:protein}(\subref{fig:sub:protein-dch}) is plotted logarithmically.
-The dominance of even-numbered depth complexities is a result of closed geometries.} 
+Note that the \dch{} in Figure~\ref{fig:protein}(\subref{fig:sub:protein-dch}) is plotted logarithmically.
+The dominance of even-numbered depth complexities is a result of closed geometries. 
 The majority of all pixels ($68\,\%$) have a depth complexity of 8 or less, whereas only very few pixels ($6.6\,\%$) have a complexity larger than 17 with a maximum of 46 for this specific camera setting. 
 
 \dch{}s are not only dependent on scene content but also on the camera settings.
@@ -601,20 +492,15 @@ The time-dependent \dch{}s are shown as vertical bar-plots of screen coverage in
 Complexities have been binned according to the legend in the lower right and the \dch{} is plotted for every tenth time step.
 The camera path is illustrated with five snapshots taken at time points 50, 150, 250, 350, and 450 respectively (top row of images).
 Additionally, the figure also shows performance (red and blue line plots, left y-axis) which will be discussed in later sections.
-%%
+%
 In addition to camera movement, the scene composition is changed every $100\textsuperscript{th}$ time-point.
 %% from caption
 At the first marker (orange), the geometry of the stick representation is removed (cf.~Figure~\ref{fig:protein}(\subref{fig:sub:protein-geoms})) reducing high-complexity pixels. 
 At the second marker (green), both volume data sources are removed (cf.~Figure~\ref{fig:protein}(\subref{fig:sub:protein-vols})) reducing low-complexity pixels. 
-%The top row of the figure corresponds to snapshots made of the different sections. 
-%The \dch{} for each time step is plotted vertically as a stacked bar chart of relative screen coverage in percentages.
-%One thing the plot shows is that the \dch{} changes over time and remains non-uniform in nature (even with the camera very close to the protein).
 From the plots, we can see that the \dch{} changes over time and that the rendering performance depend on these changes.
 We can also see that the \dch{} remains non-uniform in nature even with the camera very close to the protein.
 This opens up the possibility to save resources if the memory allocation could be adapted to the observed complexity on a per pixel basis.
-%The next section provides a technical description of why current state-of-the-art OIT techniques are only \emph{partially} able to adapt to non-uniform scene complexity. 
 In the next section we provide a technical description of how current state-of-the-art OIT techniques adapt to non-uniform scene complexities. 
-%This is then followed by descriptions of our proposed components in Section~\ref{sec:oit-local}. 
 
 
 \newcommand{\bFraglist}{Fragment List}
@@ -682,10 +568,6 @@ In addition, we show how to further optimize the algorithms with respect to thei
 \end{figure*}
 
 
-%\subsection{Dynamically Sized \ab{}s on Modern GPUs}
-%\label{sec:ab-merged}
-%\todo{no subsection if there is no 4.2! /M}
-
 The principle of the \ab{} is to capture and store a list of rasterized fragments on a per-pixel basis (called \emph{\bFraglist}). 
 This involves three sequential steps as illustrated in Figure~\ref{fig:abuffer-flowchart}: the \sClear, the \sFill, and the \sResolve. 
 Both the \sFill{} and \sResolve{} contain sub-steps associated with memory management (highlighted in blue). 
@@ -699,7 +581,7 @@ Fragment data structure and further considerations on source types will be descr
 \subsubsection*{Managing Global GPU Memory}
 
 Three prevalent approaches for managing the global \ab{} memory during the \sFill{} are used.
-These are Fixed Fragment Buffers (FFB)~\cite{Crassin2010}, Dynamic Fragment Buffers (DFB)~\minor{\cite{Maule2012,Vasilakis2012}}, and Per-Pixel Linked Lists (PPLL) \cite{kainz2009ray,Yang2010,Crassin2010}. 
+These are Fixed Fragment Buffers (FFB)~\cite{Crassin2010}, Dynamic Fragment Buffers (DFB)~\cite{Maule2012,Vasilakis2012}, and Per-Pixel Linked Lists (PPLL) \cite{kainz2009ray,Yang2010,Crassin2010}. 
 
 In Figure~\ref{fig:abuffer-global}, the three approaches are illustrated side-by-side.  
 In each approach, every pixel is associated with a fragment counter and an implicit or explicit pointer to the stored \bFraglist. 
@@ -732,13 +614,10 @@ Thus, consumption of global memory is almost optimal even for rapidly decreasing
 
 \subsubsection*{Managing Local GPU Caches}
 
-%It is common practice to copy the unsorted \bFraglist\ from global memory to local cache before sorting.
-%Thereby avoiding the relatively high latency of the global memory during the read/write intensive sorting procedure. 
-%It is common practice to avoid the relatively high latency of the global memory during the read/write intensive sorting procedure by first copying the unsorted \bFraglist\ to a local cache.
 It is common practice to avoid the higher latency of global memory by copying the unsorted \bFraglist\ to a local cache before sorting.
 An important aspect of such cache utilization is that the memory layout of modern GPUs typically exposes a limited shared cache to a group of cores. 
 Additionally, modern GPUs hide global memory latency by hot swapping groups of threads in a manner similar to pipelining on a CPU~\cite{Nvidia2011}. 
-Under ideal circumstances, the number of active threads \new{can be} eight times higher than the number of physical cores. 
+Under ideal circumstances, the number of active threads can be eight times higher than the number of physical cores. 
 Per thread allocations therefore need to be small enough such that all active threads designated to a group of cores can have their arrays allocated simultaneously. 
 It is thus important to minimize the allocation of cache memory to maximize performance. 
 Current trends also indicate that the number of cores increases faster than the available shared cache size, potentially escalating this problem in the future. 
@@ -771,13 +650,9 @@ The full rendering algorithm, optimized for geometry intensive fusion scenes, is
 \label{sec:ppao}
 
 The objective of the proposed \stencil{} component is to limit the amount of unused memory in the local cache by performing the \sResolve{} with \bArray{}s that better correspond to the depth complexity of individual pixels. 
-\minor{
 Due to restrictions in GPU cache allocations, the optimization of per-pixel array sizes requires multiple shader programs to be instantiated for different \bArray{} sizes.
-}
 Rather than using a unique shader for every possible \bArray{} size we use a smaller set of pre-defined array sizes. 
-\minor{
 This leads to a clustering of pixels with similar depth complexity into segments. 
-}
 All pixels in a segment are then resolved in a batch by a single shader. 
 The full image is then processed in as many batches as there are segments. 
 Note that the clustering is independent of the actual pixel locations and that each segment not necessarily corresponds to a focused region in the image. 
@@ -798,19 +673,17 @@ The \stencil{} algorithm is outlined below.
   \tcp{\sResolve, loop over all complexity segments}
   \ForEach{$i \in \{8, 16, \dots, \mathrm{max}\}$}{
     activate shader program for complexity segment $i$\;
-		\ForAll{\minor{unresolved pixels of the framebuffer}}{ 
+		\ForAll{unresolved pixels of the framebuffer}{ 
       \tcp{mask pixel if not part of segment class $i$}
       \If{$\mathrm{depth\ complexity}(p) <= i$}{
         resolve segment with \bArray{} of size $i$\;
-				\tcp{\minor{mark pixel as resolved}}
+				\tcp{mark pixel as resolved}
       }
     }
   }
 \end{algorithm}
 \endgroup
 
-%Since dynamic memory allocations are not possible at the highest cache levels of the GPU memory hierarchy, the optimization of per-pixel array sizes requires multiple shader programs to be instantiated with varying \bArray{} sizes.
-%This allows for dealing with different classes of complexity segments. 
 The instantiation procedure of the shader programs is straightforward as the individual instances only differ by a single number (the predetermined buffer size). 
 It is also sufficient to instantiate only a small set of shaders due to the decreasing power curve observed in most \dch{}s. 
 By analyzing the depth complexity of various scenes, we found that complexity segments of sizes $8$, $16$, $32$, \ldots, $N$ give good results with respect to performance and memory consumption.
@@ -822,8 +695,6 @@ The counting can be combined with the scene rasterization in the \sFill{} and, h
 Once the depth complexities are known, the different complexity segments may be processed. 
 This is done by looping over all pre-defined sizes of complexity segments and activating the shader program with the respective \bArray{} size. 
 The clustering of pixels into complexity classes is handled implicitly during runtime by a masking step where all pixels that are not part of the current segment are discarded. 
-%Pixels whose depth complexity is part of the current complexity segment are resolved. 
-%All other pixels are discarded. 
 Note that the graphics pipeline does not need to be flushed between triggering successive segments and that multiple segments may be evaluated in parallel (even if they are triggered sequentially). 
 Figure~\ref{fig:abuffer-local}, center, depicts the utilization of our approach for pixels exhibiting high and low depth complexity.
 
@@ -859,15 +730,15 @@ The \dloop{} algorithm is outlined below and replaces the \sResolve{} for indivi
   set \MinDepth{} to 0\;
   initialize \State\;
   
-  \tcp{\minor{\sResolve}}
+  \tcp{\sResolve}
   \Repeat{all fragments $f \in $ \FragList{} are resolved}{%
     \ForEach{fragment $f \in $ \FragList{}}{
       \eIf{\Depth($f$) $\le$ \MinDepth}{
         skip $f$ in current pass\;
       }{
-        insert $f$ into \Buffer{} \minor{with insertion sort}\;
+        insert $f$ into \Buffer{} with insertion sort\;
         \tcp{store at most $n$ elements}
-				\tcp{\minor{drop last element on overflow}}
+				\tcp{drop last element on overflow}
       }
     }
     resolve \Buffer{} considering \State\;
@@ -897,12 +768,9 @@ Note that our \dloop{} algorithm may exhibit z-fighting issues similar to regula
 The issue arises when multiple fragments of a single pixel have identical depth and only a subset of these fragments gets included in one loop iteration. 
 Since only the minimal depth is used to distinguish processed fragments from fragments yet to be resolved, the solution is not unique.
 This also complicates the decision in the subsequent iterations regarding which fragments should be discarded.
-%However, this phenomenon of multiple identical depth values inside the data is rather rare and 
 So far in our work we have not experienced any artifacts from this kind of z-fighting. 
-\minor{
 Potential solutions exist int he form of additional per-fragment flags which could be used to asses process status at the cost of additional read/write operations. 
 A comprehensive discussion on the phenomenon and its solutions can be found in the work of Vasilakis and Fudos~\cite{Vasilakis2013}. 
-}
 
 \section{Fused Rendering of Hybrid Data Sources}
 \label{sec:fusion}
@@ -918,10 +786,6 @@ In this section, we will focus on the \ab{} evaluation and the rendering of the 
 
 The following data structure is used for all fragments generated in the \sFill\ as entries of the \bFraglist: 
 \ccz{} (float32), \ccid{} (int32), \cccol{} (vec4 float16).
-%\textbf{float32} \emph{\ccz}, \textbf{int32} \emph{\ccid}, \textbf{vec4 float16} \emph{\cccol}.
-%\begin{description}[font=\normalfont\itshape]
-%\item[\abs:] \textbf{float32} \emph{\ccz}, \textbf{int32} \emph{\ccid}, \textbf{vec4 float16} \emph{\cccol}.
-%\end{description}
 The structure has a total size of 16 bytes and the same data structure is used for both geometric and volumetric contributions. 
 
 In the \sFill, \abs{} entries are computed and stored in the \bFraglist. 
@@ -933,7 +797,6 @@ Sources may be rendered independently by different shaders but the produced frag
 
 During the final stage of the \sResolve, the scene content is evaluated and blended into the framebuffer. 
 At this point, all entries in the \bFraglist{} can be interpreted as intersection points along the view rays. 
-%% The spatial position of these intersections are computed as projections of the depth value from screen to world coordinates. 
 Ray casting of the scene is performed in world space by sequentially looping over all entries in the \bFraglist. 
 Geometry fragments are blended directly to the buffer while volume rendering is performed for the interleaved ray segments. 
 Volume occupancy is tracked through a bitmask which is updated every time a fragment of a volume proxy geometry is encountered. 
@@ -967,18 +830,8 @@ The entire algorithm, with global and local optimizations, requires the implemen
 \section{Results}
 \label{sec:results}
 
-%\todo{Reviewer 5: I would like to see images for each one of the separated datasets that compose one scene.}
-
 We tested our proposed \ab{} components with four real-world cases from different fields.
 The performance was measured for a viewport size of $1024 \times 768$ on four different NVIDIA GeForce GTX GPUs: 
-%(GeForce GTX\,560, $1$\,GiB VRAM, 
-%GeForce GTX\,580, $1.5$\,GiB VRAM, 
-%GeForce GTX\,670, $2$\,GiB VRAM, 
-%GeForce Titan, $6$\,GiB VRAM).
-%(560, $1$\,GiB VRAM, % GF114
-%580, $1.5$\,GiB VRAM, % GF110
-%670, $2$\,GiB VRAM, % GK104
-%Titan, $6$\,GiB VRAM). % GK110
 560, 580, 670, and Titan ($1$\,GiB, $1.5$\,GiB, $2$\,GiB, and $6$\,GiB VRAM respectively).
 %
 Individual performance for the 580 and Titan are included in the paper (representing Fermi and Kepler architectures respectively). 
@@ -991,7 +844,6 @@ Scene configurations will be described next in Section~\ref{sec:scenarios} follo
 
 \begin{description}[font=\normalfont\itshape]
 \item[Figure~\ref{fig:protein}, protein:]% 
-  % The data corresponds to the protein 2CBA. The scene consists of four separate data sources; two volumetric data sets describing the electron charge density at different resolutions and extent, a geometric ``stick'' representation of the protein, and a geometric ``ribbon'' model of the protein, both colored by secondary structure identity. The three-dimensional structure and charges are frequently used to examine possible docking positions between the protein and secondary materials~\cite{Seeliger2010}.
   The data corresponds to the protein \emph{human carbonic anhydrase II}.
   The scene consists of four separate data sources; two volumetric data sets describing the electrostatic potential calculated at different resolutions and extents, a geometric stick representation of the protein, and a geometric ribbon model of the protein.
   Both geometric representations are colored according to the secondary structure type.
@@ -1002,16 +854,15 @@ Scene configurations will be described next in Section~\ref{sec:scenarios} follo
   This particular systems is currently used in space weather prediction \cite{Xie2004}.
   The scene consists of two volumes, showing the number of charged particles and the energy density, and three isosurfaces derived from the energy densities.
 
-\item[Figure~\ref{fig:neuro}, medical:]% 1041 + 637 streamlines
-%% old numbers: 661 + 448 tracts
+\item[Figure~\ref{fig:neuro}, medical:]% 1041 + 637 pathways
   The data, provided as the IEEE Visualization Contest in 2010, contains multiple medical imaging modalities as well as derived information sources for planning neurosurgical intervention~\cite{VisContest2010}.
-  The scene consists of four data sources; two volumetric data sets depicting T1-weighted MR images of head and brain, two sources of geometric information in a surface extraction of a tumor segmentation and about $1678$ fiber tracts obtained with diffusion tensor imaging. %perfnum
+  The scene consists of four data sources; two volumetric data sets depicting T1-weighted MR images of head and brain, two sources of geometric information in a surface extraction of a tumor segmentation and about $1678$ fiber tracts obtained with diffusion tensor imaging. 
   The combined information from all data sources is used to plan the safest possible access path for an intervention.
 
 \item[Figure~\ref{fig:flow}, cfd:]% 1184 + 1023 + 1037 streamlines
   The data results from a computational fluid dynamics simulation of blood flow in the carotid artery of a human subject.
   The scene consists of a single computed tomography image and two sets of geometric primitives.
-  A sparse glyph representation and more than 7500 individual streamlines.  %perfnum
+  A sparse glyph representation and more than 7500 individual streamlines. 
 \end{description}
 
 More details on the different data sources of the individual scenes are listed in Table~\ref{tab:data}.
@@ -1033,7 +884,6 @@ Depth complexities are available as single view \dch{}s in Figures~\ref{fig:prot
     & \small VOL        & \small $71\times71\times71$ & \\
     & \small GEO        & \small 868k triangles & \\ % sticks + atoms (454182 + 407040 = 868k)
     & \small GEO        & \small 36k triangles & \\
-    % & \multicolumn{3}{r}{\small \stencil: 64-32-16-8, \dloop: 8} \\
     \midrule
     
     space       & \small VOL        & \small $256 \times 256 \times 256$ & 
@@ -1051,10 +901,9 @@ Depth complexities are available as single view \dch{}s in Figures~\ref{fig:prot
     & \small GEO        & \small $1678$ fibers & \\
     \midrule
 
-    % 1184 1023 1037 1082 1089 879 1253 = 7547
     cfd        & \small VOL        & \small $76\times49\times45$ & 
     \multirow{4}{*}{\fbox{\includegraphics[height=1.2cm]{snapshots/performance/benchimage_Flow_resize.jpg}}} \\
-    & \small GEO        & \small $7.5$k streamlines & \\ % 7 x FiberRenderer (~1k each)
+    & \small GEO        & \small $7.5$k streamlines & \\ % 7 x FiberRenderer (~1k each) % 1184 1023 1037 1082 1089 879 1253 = 7547
     & \small GEO        & \small $\approx100$ arrows & \\
     &  &  & \\
     \bottomrule
@@ -1075,18 +924,6 @@ Depth complexities are available as single view \dch{}s in Figures~\ref{fig:prot
 \end{figure}
 
 
-
-
-
-%\todo{Reviewer 5: 
-%  \begin{itemize}
-%  \item Why the need for reporting test in two GPUs with the same architecture? 
-%    And, still, only presenting results for one of them?
-%  \item I would like to see comparisons with algorithms other than PPLL (e.g. FFB, DFB).
-%  \end{itemize}
-%}
-
-%The full algorithm and its two proposed optimizations, the \stencil\ and the \dloop, were tested on four different GPUs. 
 We have investigated how our proposed components improve the performance for each of the three \ab{} algorithms for global memory management. %%Section~\ref{sec:ab-merged}.
 For each algorithm, we measured the performance for different combinations.
 In Figure~\ref{fig:performance}, the results are shown from top to bottom for the four distinct scenes---protein, space, medical, and cfd.
@@ -1100,12 +937,12 @@ All performance results for \dloop{} were measured with a \bArray{} size set to 
 For each test, frame times were computed as the average over $30$ seconds of rendering as the camera rotated around the scene at fixed distance. 
 Early-ray termination was enabled for transparency values less than $0.02$ during all benchmarks.
 
-Due to a performance penalty \minor{associated with a CUDA/OpenGL context switch}, we were unable to achieve results for the DFB on the same level as reported by Maule~\cite{Maule2012}. 
+Due to a performance penalty associated with a CUDA/OpenGL context switch, we were unable to achieve results for the DFB on the same level as reported by Maule~\cite{Maule2012}. 
 The penalty manifested as a $50\,$ms--$200\,$ms delay associated with the scan step and was persistent across different GPUs and drivers and was also present in a minimal stand-alone DFB implementation.
 The results for the DFB approach reported in Figure~\ref{fig:performance} include this penalty.
 
 Supported by the performance graphs, we can say that both \stencil{} and \dloop{} are capable of providing significant performance gains for a large variety of configurations. 
-The performance gain is threefold for \stencil{} and about eightfold \dloop{} when averaged over all scenes and GPUs. %perfnumber
+The performance gain is threefold for \stencil{} and about eightfold \dloop{} when averaged over all scenes and GPUs. 
 For scenes with high depth complexities or homogeneous depth complexity distributions, the improvement obtained with \stencil{} is reduced since the processing of the heavy pixels becomes a bottleneck. 
 In such scenarios, \dloop{} maintains a significant speedup, particularly when early-ray termination is enabled. 
 
@@ -1142,62 +979,27 @@ Results are shown in Figure~\ref{fig:viewdep-quad} and confirm that the performa
 \section{Conclusions and Future Work}
 \label{sec:conclusion}
 
-%\todo{Reviewer 5: 
-%  \begin{itemize}
-%  \item You claim to have presented a visualization technique, but what I saw was an increment over a known OIT rendering technique (PPLL).
-%  \item Your conclusion is not a conclusion; it only sums up all that you already said before.
-%  \end{itemize}
-%}
-%
-%\begin{itemize}
-%\item dependent on application case
-%  \begin{itemize}
-%  \item volume gives context (flow, space)
-%  \item geometry gives context (protein)
-%  \item relation between different geometries (medical data, protein?)
-%  \end{itemize}
-%\end{itemize}
 
 In this paper, we address the challenge of interactive exploration of complex hybrid data. 
 Two adaptive data handling components are proposed to be combined with prevalent \ab{} techniques to form a final rendering algorithm. 
-%Both components are based on the observations made when analyzing the histogram of the respective depth complexities of hybrid data sets as acquired in modern imaging-based sciences. 
-%By minimizing the allocated local cache memory (\stencil) and performing a delayed depth sorting (\dloop), we are able to improve the previously inefficient management of local GPU caches caused by a few pixel with prohibitively high depth complexities. 
-%The two optimizations were explicitly designed to better adapt the rendering algorithm to the rapidly decreasing \dch{}s commonly found in hybrid data scenes. 
 Of the two, \dloop{} is better equipped to deal with very high complexities but does so at the cost of potential artifacts from z-fighting while \stencil{} performs well for moderate complexities with exact results. 
 Optionally, the components can be combined to achieve support for high depth complexities while guaranteeing a minimum number of correctly blended samples. 
 
 An interesting consequence of our work is the potential alleviation of the traditional trade-off between performance and depth-support. 
 We believe that this aspect makes our work valuable also in other areas of visualization or computer graphics that employ \ab{} based techniques.
-\minor{
 For example, it may now be possible to encode fiber tracking uncertainties in the alpha channel of the visualized fibers without eliminating the possibility to also visualize a co-registered volume. 
-}
-%
-%%In the future, we see several opportunities to improve the proposed methods. 
-%%For instance, an interesting avenue would be to analyze the trade-offs that can be made when blending multiple semi-transparent layers. 
-%%Apart from this, the proposed technique also makes transparency more viable for a broader range of visualization techniques. 
-%In the future, we see several opportunities to use the proposed technique as they make transparency more viable for a broader range of visualization techniques. 
-%For example, it will now be possible to encode fiber tracking uncertainties in the alpha channel of the visualized fibers without eliminating the possibility to also visualize a co-registered volume. 
 
-%\section*{Acknowledgments}
-%\label{sec:acknowledgments}
-%The authors wish to thank 
-%\red{VR anslag} AND \red{SeRC} and \red{CADICS} (from Anders) 
-%MY NICE GRANT PROVIDER NUMBER 2 
-%MY NICE GRANT PROVIDER NUMBER 3 
-%the Center for Medical Image  Science and Visualization (CMIV) at Linköping University Sweden, Cyril Crassin and Maule \etal. 
 
-%%%% if specified like this the section will be ommitted in review mode
-%\section{Acknowledgments}
-%\label{sec:acknowledgments}
-%
-%The authors wish to thank A, B, C. This work was supported in part by
-%a grant from XYZ.
+
+%%% if specified like this the section will be ommitted in review mode
+\section*{Acknowledgments}
+\label{sec:acknowledgments}
 %%
-%% GRANTS
-%% Cyril Crassin
-%% Maule et al.
-%% Data providers
+Space simulation data have been provided by CCMC at Goddard Space Flight Center, NASA. 
+% the Center for Medical Image  Science and Visualization (CMIV) at Linköping University Sweden and Cyril Crassin.
 %%
+This work was supported in part by
+ \red{VR anslag}, \red{SeRC}, and \red{CADICS}.
 
 \begin{figure*}[p]
   \centering
@@ -1267,47 +1069,6 @@ For example, it may now be possible to encode fiber tracking uncertainties in th
   }
 \end{figure*}
 
-%\begin{figure*}[p]
-%  \centering
-%  \begin{minipage}[b]{0.38\linewidth}\centering
-%    \includegraphics[width=0.98\linewidth]{snapshots/dti/cgf/screenshot_Neuro}%
-%    \subcaption{\label{fig:sub:neuro}%
-%      neurosurgical planning
-%    }
-%  \end{minipage}\hfill
-%  \begin{minipage}[b]{0.38\linewidth}\centering
-%    \includegraphics[width=0.98\linewidth]{snapshots/flow/cgf/screenshot_Flow}
-%    \subcaption{\label{fig:sub:flow}%
-%      blood flow
-%    }
-%  \end{minipage}\hfill
-%  \begin{minipage}[b]{0.22\linewidth}\centering
-%  \begin{minipage}[b]{1.0\linewidth}\centering
-%    % \includegraphics[width=0.98\linewidth]{snapshots/dti/cgf/dci-dch_Neuro_dch-256-max255}
-%    \includegraphics[width=1.0\linewidth]{figures/plot-dch-neuro}
-%    \subcaption{\label{fig:sub:neuro-dch}%
-%      depth complexity
-%    }
-%  \end{minipage}\hfill
-%  \begin{minipage}[b]{1.0\linewidth}\centering
-%    % \includegraphics[width=0.98\linewidth]{snapshots/flow/cgf/dci-dch_Flow_dch-128-max79}
-%    \includegraphics[width=1.0\linewidth]{figures/plot-dch-flow}
-%    \subcaption{\label{fig:sub:flow-dch}%
-%      depth complexity
-%    }
-%  \end{minipage}
-%  \end{minipage}
-%  % 
-%  \caption{\label{fig:neuro-flow}%
-%    Fused visualization of hybrid data is becoming an important tool in a variety of fields. 
-%    (\subref{fig:sub:neuro})~visualization used for neurosurgical planning.
-%    (\subref{fig:sub:flow})~visualization used to asses blood flow in the human carotid artery. 
-%    Both scenes contain multiple sources of semi-transparent geometry as well as volumetric data. 
-%    %% Performing these rendering in real time is essential in order for a user to explore the data, but challenging due to the high depth complexities of the scenes. 
-%    (\subref{fig:sub:neuro-dch}),~(\subref{fig:sub:flow-dch})~depict the respective depth complexity histograms (\dch{}s, log scale). %perfnumber
-%    %% with maximum depth complexities of $294$ (neuro) and $79$ (flow), respectively. 
-%  }
-%\end{figure*}
 
 \begin{figure*}[p]
   \centering
@@ -1335,9 +1096,6 @@ For example, it may now be possible to encode fiber tracking uncertainties in th
     Fused visualization of hybrid data for the purpose of neurosurgical planning.
     The scene is particularly complex in areas where the DTI fibers converge toward two main bundles. 
     (\subref{fig:sub:neuro})~full scene, (\subref{fig:sub:neuro-zoom})~zoomed view, and (\subref{fig:sub:neuro-dch})~the depth complexity histogram (\dch{}, log scale) of~(\subref{fig:sub:neuro}).
-    %% Performing these rendering in real time is essential in order for a user to explore the data, but challenging due to the high depth complexities of the scenes. 
-    %perfnumber
-    %% with maximum depth complexities of $294$ (neuro) and $79$ (flow), respectively. 
   }
 \end{figure*}
 
@@ -1369,58 +1127,6 @@ For example, it may now be possible to encode fiber tracking uncertainties in th
     %% with maximum depth complexities of $294$ (neuro) and $79$ (flow), respectively. 
   }
 \end{figure*}
-
-%\begin{table*}[t]
-%\centering
-%		\begin{tabular}{| p{1.1cm} || c | c || c | c | c || c || c | c || c | c || c |}
-%		\hline 
-%			& & & \multicolumn{7}{c|}{Performance Configurations (timings in FPS)} & \\
-%			& & & \multicolumn{3}{c||}{PPLL}    &    \multicolumn{1}{c||}{PPLL}    &    \multicolumn{2}{c||}{PPLL}    &    \multicolumn{1}{c|}{PPLL} & \\
-%			& & & \multicolumn{3}{c||}{~}    &    \multicolumn{1}{c||}{+ppAO}    &    \multicolumn{2}{c||}{+ppDP}    &    \multicolumn{1}{c|}{+ppAO} & \\
-%			& & & \multicolumn{3}{c||}{~}    &    \multicolumn{1}{c||}{~}    &    \multicolumn{2}{c||}{~}    &    \multicolumn{1}{c|}{+ppDP} & \\
-%		
-%		Setup 			& Data & Data size  & 32   & 64    & 128  & 128---8  & 8*    & 16*   & 8*,8 & \% \\
-%		\hline\hline
-%			
-%		Protein     & \small VOL        & \small $127\times127\times127$ & 53.08 & 25.34 & 10.30 & 66.71 & 87.03 & 74.68 & 92.85 & \textbf{3.6X} \\
-%		        	  & \small VOL        & \small $71\times71\times71$ & (NC) &   		&  			&      &       &     	&     &  \\
-%		            %& \small VOL        & \small $71\times71\times71$ &   	  &       &  	    &       &       &  	    &     &  \\
-%		            & \small GEO        & \small 45k triangles &   	  &       &  	    &       &       &  	    &     &  \\
-%		            & \small GEO        & \small 36k triangles &   	  &       &  	    &       &       &  	    &    &   \\
-%		\hline
-%		
-%		Space       & \small VOL        & \small $256 \times 256 \times 256$ & 9.86 & 4.21 & 3.22 & 28.56 & 34.86 & 24.80 & 36.15 &  \textbf{8.5X} \\
-%		Weather  & \small VOL      & \small $256 \times 256 \times 256$ & (NC) &       &      	&       &       &     	& & \\
-%		            & \small GEO        & \small 162k triangles              &   	  &       &  	    &       &       &  	    & & \\
-%		            & \small GEO        & \small 100k triangles              &   	  &       &  	    &       &       &  	    & & \\
-%		            & \small GEO        & \small 67k triangles               &   	  &       &  	    &       &       &  	    & & \\
-%		\hline
-%		
-%		Neuro       & \small VOL        & \small $415\times487\times176$ & 21.19 & 9.25 & 3.29 & 7.94 & 39.37 & 32.04 & 40.73 & --- \\
-%		        	  & \small VOL        & \small $367\times395\times150$ & (NC) & (NC)  & (NC) & (NC)&       &  	   &       & \\
-%		            & \small GEO        & \small $54\times52\times29$    &   	  &      &  	  &      &       &  	   &       & \\
-%		            & \small GEO        & \small $1678$ streamlines           &    	&      &  	  &      &       &  	   &       & \\
-%		\hline
-%		
-%		Flow        & \small VOL        & \small $76\times49\times45$ & 19.25 & 9.35 & 3.93 & 29.43 & 32.95 & 27.05 & 34.31 &  \textbf{3.6X} \\
-%			  & \small GEO        & \small $1986$ streamlines     & (NC)  &      &  	  &      &       &  	   &      &  \\
-%		            & \small GEO        & \small $\approx100$ arrows             &   	  &      &  	  &      &       &  	   &       & \\
-%		\hline
-%	  \end{tabular}
-%	\caption{%
-%	Performance measurements of our algorithm. 
-%	The numerical labels (top) depicts the size of the \bArray. 
-%	A * indicates the array size used for looping (\dloop). 
-%	The (NC = Not correct) label indicates that the configuration was unable to render all fragments for one or more pixels due to overflow in the local array. 
-%	For the Neuro scene, no configuration that relied on single usage of static arrays were capable of rendering the image without discarding unresolved samples. 
-%          \todo{Reviewer 5: 
-%            what is the maximum depth complexity for each scene? 
-%            i.e.\ does not make sense to present results for a local array size of 128 for a scene with max.\ depth complexity of 64 (it is misleading). 
-%            What do the ``*'' mean? What is the ``\%'' column?
-%          }
-%        }
-%	\label{tab:performance}
-%\end{table*}
 
 
 %\bibliographystyle{eg-alpha}
