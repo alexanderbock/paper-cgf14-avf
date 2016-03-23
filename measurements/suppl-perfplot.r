@@ -1,6 +1,6 @@
 # R functions for performance analysis
 #
-# $Id$
+# $Id: suppl-perfplot.r 5025 2014-02-11 13:52:56Z marfa45 $
 #
 
 

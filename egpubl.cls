@@ -947,8 +947,8 @@ submitted to \textit{#1}%
      EUROGRAPHICS \p@EGyear{} / \p@ConfEditors{}\\
      \p@ConfEditorStrg}% (Guest Editors)}
    \hfill
-   %\textit{Volume \j@volume} (\textit{\p@ConfYear\/}), \textit{Number \j@issue}}%
-   \textit{In press. Uncorrected preprint manuscipt.}}%
+   \textit{Volume \j@volume} (\textit{\p@ConfYear\/}),
+   \textit{Number \j@issue}}%
  }%
 }
  \def\@oddfoot{{\tiny\raisebox{\z@}[8pt][1pt]{\parbox[t]{18pc}{\sloppy
@@ -971,8 +971,8 @@ submitted to \textit{#1}%
      \p@ConfEditors{}\\
      \p@ConfEditorStrg}% (Guest Editors)}
    \hfill
-   %\textit{Volume \j@volume} (\textit{\p@ConfYear\/}), \textit{Number \j@issue}}%
-   \textit{In press. Uncorrected preprint manuscipt.}}%
+   \textit{Volume \j@volume} (\textit{\p@ConfYear\/}),
+   \textit{Number \j@issue}}%
  }%
 }
  \def\@oddfoot{{\tiny\raisebox{\z@}[8pt][1pt]{\parbox[t]{18pc}{\sloppy
@@ -999,9 +999,9 @@ submitted to \textit{#1}%
      EUROGRAPHICS \p@EGyear{} / \p@ConfEditors{}\\
      \p@ConfEditorStrg}% (Guest Editors)}
    \hfill
-   %\textit{Volume \j@volume} (\textit{\p@ConfYear\/}),
-   %\textit{Volume \j@volume} (\textit{\j@year\/}), \textit{Number \j@issue}}%
-   \textit{In press. Uncorrected preprint manuscipt.}}%
+%   \textit{Volume \j@volume} (\textit{\p@ConfYear\/}),
+   \textit{Volume \j@volume} (\textit{\j@year\/}),
+   \textit{Number \j@issue}}%
  }%
 }
  \def\@oddfoot{{\tiny\raisebox{\z@}[8pt][1pt]{\parbox[t]{20pc}{\sloppy
@@ -1028,9 +1028,9 @@ submitted to \textit{#1}%
      \p@ConfEditors{}\\
      \p@ConfEditorStrg}% (Guest Editors)}
    \hfill
-   %\textit{Volume \j@volume} (\textit{\p@ConfYear\/}),
-   %\textit{Volume \j@volume} (\textit{\j@year\/}), \textit{Number \j@issue}}%
-   \textit{In press. Uncorrected preprint manuscipt.}}%
+%   \textit{Volume \j@volume} (\textit{\p@ConfYear\/}),
+   \textit{Volume \j@volume} (\textit{\j@year\/}),
+   \textit{Number \j@issue}}%
  }%
 }
  \def\@oddfoot{{\tiny\raisebox{\z@}[8pt][1pt]{\parbox[t]{20pc}{\sloppy
@@ -1050,7 +1050,8 @@ submitted to \textit{#1}%
 \def\ps@titlepage{\let\@mkboth\@gobbletwo
  \def\@oddhead{\raisebox{\z@}[8pt][1pt]{\parbox{\textwidth}{\small
 %    \textit{Volume \j@volume} (\textit{\number\year}\/),
-   \textit{Volume xx} (\textit{200y}\/), \textit{Number z, \ pp.\ \j@pStartPage--\j@pEndPage}%
+   \textit{Volume xx} (\textit{200y}\/),         % Vol + year yet unknown !
+   \textit{Number z, \ pp.\ \j@pStartPage--\j@pEndPage}%
    \hfill
  }}}%
 %
@@ -1075,8 +1076,8 @@ submitted to \textit{#1}%
 \def\ps@titlepage{\let\@mkboth\@gobbletwo
  \def\@oddhead{\raisebox{\z@}[8pt][1pt]{\parbox{\textwidth}{\small
 %   \textit{Volume \j@volume} (\textit{\number\year}\/),
-   %\textit{Volume \j@volume} (\textit{\j@year}\/), \textit{Number \j@issue\ pp.\ \j@pStartPage--\j@pEndPage}%
-   \textit{Preprint manuscipt.} \textit{Volume xx} (\textit{201y}\/), \textit{Number z.}%
+   \textit{Volume \j@volume} (\textit{\j@year}\/),
+   \textit{Number \j@issue\ pp.\ \j@pStartPage--\j@pEndPage}%
    \hfill \@journal
  }}}%
 %

@@ -1,6 +1,6 @@
 # R script for plotting performance data
 #
-# $Id$
+# $Id: plot.r 5023 2014-02-07 14:13:18Z marfa45 $
 #
 
 ## omit scientific numbers with exponents

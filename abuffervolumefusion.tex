@@ -188,9 +188,10 @@
 %% Emails below author names
 \author[S.~Lindholm et al.]%
 		{\SL, \MF, \ES, \AB, \AY, and \TR\\% 
+		Scientific Visualization Group, 
 		Department of Science and Technology, 
 		Link{\"o}ping University\\% 
-		\{stefan.lindholm, martin.falk, erik.sunden, anders.ynnerman, timo.ropinski\}@liu.se}
+		\{stefan.lindholm$|$timo.ropinski\}@liu.se}
 
 %\author[CGF-14-EG-016.R1]
        %{CGF-14-EG-016.R1}
@@ -807,7 +808,7 @@ Once the occupancy and entry and exit points are known, the problem is reduced t
 
 Our implementation supports global memory management using FFB, DFB, and PPLL as described in Section~\ref{sec:oit-global}. 
 The FFB and PPLL implementations are derived from the work by Crassin~\cite{Crassin2010}.
-The code for the DFB implementation was provided by Maule \etal~\cite{Maule2012} and was slightly changed to fit our needs.
+The code for the DFB implementation was provided by Maule~\etal \cite{Maule2012} and was slightly changed to fit our needs.
 We use C++, OpenGL, and GLSL for our framework.
 The only exception is the scan step of the DFB implementation which is performed in CUDA using the CUDA Thrust library as explained by Maule~\etal
 
@@ -936,7 +937,7 @@ All performance results for \dloop{} were measured with a \bArray{} size set to 
 For each test, frame times were computed as the average over $30$ seconds of rendering as the camera rotated around the scene at fixed distance. 
 Early-ray termination was enabled for transparency values less than $0.02$ during all benchmarks.
 
-Due to a performance penalty associated with a CUDA/OpenGL context switch, we were unable to achieve results for the DFB on the same level as reported by Maule \etal~\cite{Maule2012}. 
+Due to a performance penalty associated with a CUDA/OpenGL context switch, we were unable to achieve results for the DFB on the same level as reported by Maule~\cite{Maule2012}. 
 The penalty manifested as a $50\,$ms--$200\,$ms delay associated with the scan step and was persistent across different GPUs and drivers and was also present in a minimal stand-alone DFB implementation.
 The results for the DFB approach reported in Figure~\ref{fig:performance} include this penalty.
 

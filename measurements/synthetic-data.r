@@ -1,6 +1,6 @@
 ## generate synthetic data for R scripts
 ## 
-## $Id$
+## $Id: synthetic-data.r 4979 2014-01-17 10:25:31Z marfa45 $
 ##
 
 if (FALSE) {

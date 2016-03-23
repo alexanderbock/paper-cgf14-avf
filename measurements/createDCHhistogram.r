@@ -1,7 +1,7 @@
 ## read in png images and compute a grayscale histogram
 ## save result in CSV file
 ##
-## $Id$
+## $Id: createDCHhistogram.r 5007 2014-01-21 15:02:06Z marfa45 $
 ##
 
 
